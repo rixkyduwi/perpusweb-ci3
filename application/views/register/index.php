@@ -22,11 +22,7 @@
                <label for="lastname">Last Name</label>
                <input type="text" class="form-control" name="lastname" id="lastname" value="<?= set_value('lastname') ?>">
               </div>
-              <div class="col-lg-12 form-group">
-               <label for="email">Email</label>
-               <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
-              </div>
-              
+          
               <div class="col-lg-12 form-group">
                <label for="kelas">Kelas</label>
                <input type="text" class="form-control" name="kelas" id="kelas" value="<?= set_value('kelas') ?>">
@@ -36,6 +32,11 @@
                <label for="jurusan">Jurusan</label>
                <input type="text" class="form-control" name="jurusan" id="jurusan" value="<?= set_value('jurusan') ?>">
               </div>
+              <div class="col-lg-12 form-group">
+               <label for="email">Email</label>
+               <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
+              </div>
+              
               <div class="col-lg-12 form-group">
                <label for="password">Password</label>
                <input type="password" class="form-control" name="password" id="password" value="">
@@ -89,7 +90,8 @@ function cekMember() {
             $('#sbmtbtn').attr('type','submit');
             $('#sbmtbtn').removeClass('disabled');
             $('#sbmtbtn').attr('type','submit');
-            const myArray = data.split(" ");
+            const array =JSON.parse(data);
+            const myArray = array['fullname'].split(" ");
             console.log(myArray)
             let word = myArray[0];
             $("#firstname").val(word);
@@ -100,6 +102,9 @@ function cekMember() {
               else{ lastword+= String(myArray[i])+" ";}
             }
             $("#lastname").val(lastword);
+            $("#kelas").val(array['kelas']);
+            $("#jurusan").val(array['jurusan']);
+
           }
           },
         cache: false,

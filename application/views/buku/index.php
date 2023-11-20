@@ -10,8 +10,6 @@
                 <i class="fas fa-plus"></i>
             </span>
         </a>
-
-
     </div>
 
     <div class="col-lg-12 mb-4" id="container">
@@ -44,20 +42,21 @@
                                 <td onclick="detail('<?= $b->id_buku ?>')">
                                 <?php  
 
-                                $this->db->select_sum('pb.qty');
-                                $this->db->from('peminjaman as p');
-                                $this->db->join('p_buku as pb', 'pb.id_pinjam = p.id_pinjam');
-                                $this->db->where('pb.id_buku', $b->id_buku);
-                                $this->db->where('p.status', 'Pinjam');
-                                $query = $this->db->get(); 
+                                // $this->db->select_sum('pb.qty');
+                                // $this->db->from('peminjaman as p');
+                                // $this->db->join('p_buku as pb', 'pb.id_pinjam = p.id_pinjam');
+                                // $this->db->where('pb.id_buku', $b->id_buku);
+                                // $this->db->where('p.status', 'Pinjam');
+                                // $query = $this->db->get(); 
 
-                                $p = $query->row();
+                                // $p = $query->row();
 
-                                    //$data = $this->db->select_sum('qty')->from('p_buku')->where('id_buku', $b->id_buku)->get();
-                                    //$p = $data->row();
-                                    $hasil = intval($b->jmlbuku) - intval($p->qty);
+                                //     //$data = $this->db->select_sum('qty')->from('p_buku')->where('id_buku', $b->id_buku)->get();
+                                //     //$p = $data->row();
+                                //     $hasil = intval($b->jmlbuku) - intval($p->qty);
+                                //     echo $hasil
+                                echo $b->jmlbuku;
                                     ?>
-                                    <?= $hasil ?>
                                 </td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->kategori ?></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->rak ?></td>

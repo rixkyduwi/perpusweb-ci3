@@ -13,7 +13,6 @@
             <div class="card-body">
                 <form action="<?= base_url() ?>laporan/peminjaman_pdf" method="POST" target="_blank">
                     <div class="row">
-
                         <div class="col-lg-3 mb-4">
                             <div class="input-group">
                                 <input name="tglawal" id="datepicker1" autocomplete="off" placeholder="tanggal mulai"
@@ -25,7 +24,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-3 mb-4">
                             <div class="input-group">
                                 <input name="tglakhir" id="datepicker2" autocomplete="off" placeholder="tanggal akhir"
@@ -37,32 +35,26 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg mb-4">
-
                             <a href="#" class="btn btn-md btn-primary btn-icon-split mb-4" onclick="filter()">
                                 <span class="text text-white">Filter</span>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-search"></i>
                                 </span>
                             </a>
-
                             <a href="#" class="btn btn-md btn-secondary btn-icon-split mb-4" onclick="reset()">
                                 <span class="text text-white">Reset</span>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-undo"></i>
                                 </span>
                             </a>
-
                             <button type="submit" class="btn btn-md btn-danger btn-icon-split mb-4">
                                 <span class="text text-white">Cetak PDF</span>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-file-pdf"></i>
                                 </span>
                             </button>
-
                         </div>
-
                     </div>
                 </form>
 

@@ -73,9 +73,13 @@ class Register extends CI_Controller {
 			'nis' => $id
 		);
 		$member = $this->db->get_where('member', $where)->row_array(); // Mengambil data anggota berdasarkan nis
-	
+		$newData = [
+			'fullname' => $member['fullname'],
+			'kelas' => $member['kelas'],
+			'jurusan' => $member['jurusan'],
+		];
 		if ($member) {
-			echo $member['fullname'];
+			echo json_encode($newData, true);; //ketika Anda ingin mengirim data dari server ke aplikasi klien atau sebaliknya, dan JSON sering digunakan karena kemudahan pembacaannya oleh berbagai bahasa pemrograman.
 		} else {
 			echo "tidak ditemukan";
 		}

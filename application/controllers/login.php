@@ -29,16 +29,17 @@ class Login extends CI_Controller {
     	$password = $this->input->post('pwd');
 
 		 // Query database untuk mengambil data pengguna berdasarkan username
-		 $user = $this->db->get_where('login', ['username' => $username])->row_array();
+		 $user = $this->db->get_where('pengguna', ['email' => $username])->row_array();
 
 		 if ($user) {
 			 // Memeriksa apakah password cocok dengan hash yang disimpan dalam database
 			 if (password_verify($password, $user['password'])) {
 				$sessi = array(
-					'id_user' => $user['id'],
-					'username' => $user['firstname'],
-					'lastname' => $user['lastname'],
-					'level' => $user['role'],
+					'id_user' => $user['id_user'],
+					'nis' => $user['nis'],
+					'nama' => $user['nama'],
+					'email' => $user['email'],
+					'level' => $user['level'],
 					'login' => 'perpusweb'
 				);
 	

@@ -117,11 +117,9 @@
 
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/anggota.js"></script>
-<script src="<?= base_url(); ?>assets/js/validasi/formanggota.js"></script>
-<script src="<?= base_url(); ?>assets/plugin/chosen/chosen.jquery.min.js"></script>
-
+<!-- 
 <script>
-$('.chosen').chosen({
+$('.chosen').chosen({ -->
     width: '100%',
 
 });
@@ -150,4 +148,4 @@ $(document).ready(function() {
     })
 });
 </script>
-<?php endif; ?>
+<?php endif; ?> 

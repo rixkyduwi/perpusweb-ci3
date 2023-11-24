@@ -43,6 +43,12 @@
                                 <input class="form-control" name="notelp" type="number" >
                             </div>
 
+                            <!-- NIS -->
+                            <div class="form-group"><label>NIS (Nomor Induk Siswa)</label>
+                                <input class="form-control" name="nis" type="number" >
+                                <small>apabila bukan siswa maka tidak perlu diisi</small>
+                            </div>
+
                             <!-- Email -->
                             <div class="form-group"><label>Email</label>
                                 <input class="form-control" name="email" type="email" >
@@ -55,6 +61,7 @@
                                     <option value="Administrasi">Administrasi</option>
                                     <option value="Petugas">Petugas</option>
                                     <option value="Kepala">Kepala</option>
+                                    <option value="Siswa">Siswa</option>
                                 </select>
                             </div>
 
@@ -93,7 +100,7 @@
                         <br>
                         <center>
                             <div>
-                                <img src="<?= base_url() ?>assets/upload/pengguna/user.png" id="outputImg" width="200"
+                                <img src="<?= base_url() ?>assets/upload/pengguna/guest.png" id="outputImg" width="200"
                                     maxheight="300">
                             </div>
                         </center>

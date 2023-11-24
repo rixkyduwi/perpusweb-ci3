@@ -10,6 +10,7 @@ class Register extends CI_Controller {
 	$this->load->library('pagination');
 	$this->load->helper('cookie');
 	$this->load->model('member_model');
+	$this->load->model('user_model');
     $this->load->library('form_validation');
   }
 
@@ -38,30 +39,38 @@ class Register extends CI_Controller {
 			$data['validation_errors'] = validation_errors();
 		} else {
 			$nis = $this->input->post('member_id');
-			$username = $this->input->post('email');
+			$email = $this->input->post('email');
 			$data = [];
 			$where = [
 				'nis' => $nis
 			];
 	
-			if ($this->db->where($where)->update('member', ['email' => $username])) {
+			if ($this->db->where($where)->update('member', ['email' => $email])) {
 				// Sukses
 			} else {
 				echo "server error";
 			}
 	
+			// $newData = [
+			// 	'firstname' => $this->input->post('firstname'),
+			// 	'lastname' => $this->input->post('lastname'),
+			// 	'username' => $username,
+			// 	'role' => "siswa",
+			// 	'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Hash password
+			// ];
+			$kode = $this->user_model->buat_kode(); 
 			$newData = [
-				'firstname' => $this->input->post('firstname'),
-				'lastname' => $this->input->post('lastname'),
-				'username' => $username,
-				'role' => "siswa",
-				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Hash password
+				'id_user'=> $kode,
+				'nama' => $this->input->post('firstname')." ".$this->input->post('lastname'),
+				'email' => $email,
+				'level' => "siswa",
+				'pass' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Hash password
+				'foto' => 'man.png'
 			];
-	
-			$this->db->insert('login', $newData);
+			$this->db->insert('pengguna', $newData);
 	
 			$this->session->set_flashdata('success', 'Successful Registration');
-			redirect('/login');
+			return redirect('login');
 		}
 	}
 	
@@ -72,9 +81,9 @@ class Register extends CI_Controller {
 		$where = array(
 			'nis' => $id
 		);
-		$member = $this->db->get_where('member', $where)->row_array(); // Mengambil data anggota berdasarkan nis
+		$member = $this->db->get_where('anggota', $where)->row_array(); // Mengambil data anggota berdasarkan nis
 		$newData = [
-			'fullname' => $member['fullname'],
+			'fullname' => $member['nama_lengkap'],
 			'kelas' => $member['kelas'],
 			'jurusan' => $member['jurusan'],
 		];

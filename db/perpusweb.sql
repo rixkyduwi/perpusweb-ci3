@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Okt 2023 pada 08.46
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Generation Time: Nov 24, 2023 at 03:21 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,13 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anggota`
+-- Table structure for table `anggota`
 --
 
 CREATE TABLE `anggota` (
   `id_anggota` varchar(40) NOT NULL,
+  `nis` int(11) DEFAULT NULL,
   `nama_lengkap` varchar(50) DEFAULT NULL,
+  `jurusan` varchar(50) DEFAULT NULL,
+  `kelas` char(3) DEFAULT NULL,
   `notelp` varchar(13) DEFAULT NULL,
+  `email` varchar(1000) DEFAULT NULL,
   `jk` varchar(30) DEFAULT NULL,
   `tempat` varchar(50) DEFAULT NULL,
   `tgllahir` varchar(50) DEFAULT NULL,
@@ -40,18 +44,60 @@ CREATE TABLE `anggota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `anggota`
+-- Dumping data for table `anggota`
 --
 
-INSERT INTO `anggota` (`id_anggota`, `nama_lengkap`, `notelp`, `jk`, `tempat`, `tgllahir`, `umur`, `alamat`, `foto`) VALUES
-('A0001', 'Radhian Sobarna', '087754224567', 'Laki-laki', 'Sumedang', '04/23/2000', '20', 'Desa Sukatali, Kec Situraja', 'radhian.jpg'),
-('A0002', 'Dhea Mawarni', '087827817289', 'Perempuan', 'Sumedang', '04/14/2000', '20', 'Desa Cihanja, Kec ganeas', 'dhea.jpg'),
-('A0003', 'Heri Perdi', '089980089789', 'Laki-laki', 'Sumedang', '04/12/2000', '20', 'Sumedang', 'man.png');
+INSERT INTO `anggota` (`id_anggota`, `nis`, `nama_lengkap`, `jurusan`, `kelas`, `notelp`, `email`, `jk`, `tempat`, `tgllahir`, `umur`, `alamat`, `foto`) VALUES
+('A0001', NULL, 'Radhian Sobarna', '', '', '087754224567', '', 'Laki-laki', 'Sumedang', '04/23/2000', '20', 'Desa Sukatali, Kec Situraja', 'man.png'),
+('A0002', 207451, 'ALLENA RAHMA FAOHILA', 'TKJ', 'XII', '213443667', 'allena251@gmail.com', '', '', '', '', '', 'man.png'),
+('A0003', 207452, 'AMANDA NISYA AOERORA', 'TKJ', 'XII', '', 'amanda@gmail.com', '', '', '', '', '', 'man.png'),
+('A0004', 207453, 'ANGGITA WIBOWO', 'TKJ', 'XII', '', 'anggitawibowo96@gmail.com', '', '', '', '', '', 'man.png'),
+('A0005', 207454, 'AULIA PITALOKA GUNAWAN', 'TKJ', 'XII', '', 'auliapitaloka@gmail.com', '', '', '', '', '', 'man.png'),
+('A0006', 207455, 'AZHARA SALMA SAFITRI', 'TKJ', 'XII', '', 'azharasalma@gmail.com', '', '', '', '', '', 'man.png'),
+('A0007', 207456, 'BANI FADHLIH AZKA FEBRIAN', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0008', 207457, 'DHIRO BAHARI', 'TKJ', 'XII', '', 'dhirobahari@gmail.com', '', '', '', '', '', 'man.png'),
+('A0009', 207458, 'DIAN TRESIANA YULIANTI', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0010', 207459, 'DWI HILMAN FEBRIANSYAH', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0011', 207460, 'DYAH AYU SAVITRI', 'TKJ', 'XII', '', 'fauziuser@gmail.com', '', '', '', '', '', 'man.png'),
+('A0012', 207461, 'EKA BAGAS PRASETYA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0013', 207462, 'ERNESTA AULIA CAHYANI', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0014', 207463, 'ESYA JUANG KURNIA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0015', 207464, 'FAD ANTIKA HAPSARI', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0016', 207465, 'FINDA AYU KHOIRUNNISA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0017', 207466, 'JIHAN MAULIDAH AZZAHRA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0018', 207467, 'LISZA INDANA ZULFA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0019', 207468, 'LULU NAILA ROMADHONA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0020', 207469, 'MOHAMMAD FAJAR SUBECHI', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0021', 207470, 'MUCHAMMAD YANUAR ROCHMA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0022', 207471, 'MUHAMMAD IQBAL', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0023', 207472, 'MUHAMMAD IQBAL SAPUTRA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0024', 207473, 'MUHAMMAD RAMADITYA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0025', 207474, 'MUKHAMMAD AKHADDIN', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0026', 207475, 'RADITA ZAHWA ALLIYAH', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0027', 207476, 'RESTA SABRINA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0028', 207477, 'ROYAN WILDAN NURYAMAN', 'TKJ', 'XII', '', 'royan@gmail.com', '', '', '', '', '', 'man.png'),
+('A0029', 207478, 'SHAFA MAULANA RAMADHANI', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0030', 207479, 'SYAH IRKHAM RAMADHAN', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0031', 207480, 'VIRGIO ARWA SANDHIKA', 'TKJ', 'XII', '', 'rizkydwisaputrr@gmail.com', '', '', '', '', '', 'man.png'),
+('A0032', 207481, 'VITO DIMAS SAPUTRA', 'TKJ', 'XII', '', '', '', '', '', '', '', 'man.png'),
+('A0033', 207483, 'ZAKI ARUNDAYA', 'TKJ', 'XII', '', 'zakiara@gmail.com', '', '', '', '', '', 'man.png'),
+('A0035', NULL, 'RIZKYDWIS', '', '', '08928472193', 'rizkydwisaputrar1@gmail.com', '', '', '', '', '', 'man.png'),
+('A0036', NULL, 'ozimaksum', '', '', '082313593935', 'gaozimaksum@gmail.com', '', '', '', '', '', 'man.png'),
+('A0037', NULL, 'rizqimaksum', '', '', '085800001455', 'rizqimaksum123@gmail.com', '', '', '', '', '', 'man.png'),
+('A0038', NULL, 'ozimaksum', '', '', NULL, 'blbla@gmail.com', '', '', '', '', '', 'man.png'),
+('A0039', NULL, 'ozicobalagi', '', '', NULL, 'oziicobalagi@gmail.com', '', '', '', '', '', 'man.png'),
+('A0040', NULL, 'zami maksum', '', '', NULL, NULL, '', '', '', '', '', 'man.png'),
+('A0041', NULL, 'zamimaksum ozi', '', '', NULL, NULL, '', '', '', '', '', 'man.png'),
+('A0042', NULL, 'oziiakak', '', '', NULL, NULL, '', '', '', '', '', 'man.png'),
+('A0043', NULL, 'gozi', '', '', NULL, NULL, '', '', '', '', '', 'man.png'),
+('A0049', NULL, 'xii', '', '', NULL, NULL, '', '', '', '', '', 'man.png'),
+('A0050', NULL, 'Dhea Mawarni', '', '', '087827817289', '', 'Perempuan', 'Sumedang', '04/14/2000', '20', 'Desa Cihanja, Kec ganeas', 'man1.png'),
+('A0051', NULL, 'Heri Perdi', '', '', '089980089789', '', 'Laki-laki', 'Sumedang', '04/12/2000', '20', 'Sumedang', 'man2.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `book_dataset`
+-- Table structure for table `book_dataset`
 --
 
 CREATE TABLE `book_dataset` (
@@ -71,7 +117,7 @@ CREATE TABLE `book_dataset` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
 CREATE TABLE `buku` (
@@ -90,7 +136,7 @@ CREATE TABLE `buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data for table `buku`
 --
 
 INSERT INTO `buku` (`id_buku`, `id_kategori`, `id_penerbit`, `id_rak`, `judul`, `pengarang`, `isbn`, `jmlhal`, `jmlbuku`, `tahun`, `sinopsis`, `foto`) VALUES
@@ -102,7 +148,7 @@ INSERT INTO `buku` (`id_buku`, `id_kategori`, `id_penerbit`, `id_rak`, `judul`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `coba`
+-- Table structure for table `coba`
 --
 
 CREATE TABLE `coba` (
@@ -113,7 +159,7 @@ CREATE TABLE `coba` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `coba`
+-- Dumping data for table `coba`
 --
 
 INSERT INTO `coba` (`id`, `nama`, `salin`, `gambar`) VALUES
@@ -998,7 +1044,7 @@ INSERT INTO `coba` (`id`, `nama`, `salin`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `katalog`
+-- Table structure for table `katalog`
 --
 
 CREATE TABLE `katalog` (
@@ -1020,7 +1066,7 @@ CREATE TABLE `katalog` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -1030,7 +1076,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`, `keterangan`) VALUES
@@ -1043,7 +1089,7 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -1058,7 +1104,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `firstname`, `lastname`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
@@ -1082,7 +1128,7 @@ INSERT INTO `login` (`id`, `firstname`, `lastname`, `username`, `password`, `rol
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -1098,7 +1144,7 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `member`
+-- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id`, `nis`, `fullname`, `jurusan`, `kelas`, `phone`, `email`, `created_at`, `updated_at`) VALUES
@@ -1124,10 +1170,10 @@ INSERT INTO `member` (`id`, `nis`, `fullname`, `jurusan`, `kelas`, `phone`, `ema
 (21, 207470, 'MUCHAMMAD YANUAR ROCHMA', 'TKJ', 'XII', '', '', '2023-07-12 00:00:00', '2023-07-12 00:00:00'),
 (22, 207471, 'MUHAMMAD IQBAL', 'TKJ', 'XII', '', '', '2023-07-13 00:00:00', '2023-07-13 00:00:00'),
 (23, 207472, 'MUHAMMAD IQBAL SAPUTRA', 'TKJ', 'XII', '', '', '2023-07-14 00:00:00', '2023-07-14 00:00:00'),
-(24, 207473, 'MUHAMMAD RAMADITYA', 'TKJ', 'XII', '', '', '2023-07-15 00:00:00', '2023-07-15 00:00:00'),
-(25, 207474, 'MUKHAMMAD AKHADDIN', 'TKJ', 'XII', '', '', '2023-07-16 00:00:00', '2023-07-16 00:00:00'),
-(26, 207475, 'RADITA ZAHWA ALLIYAH', 'TKJ', 'XII', '', '', '2023-07-17 00:00:00', '2023-07-17 00:00:00'),
-(27, 207476, 'RESTA SABRINA', 'TKJ', 'XII', '', '', '2023-07-18 00:00:00', '2023-07-18 00:00:00'),
+(24, 207473, 'MUHAMMAD RAMADITYA', 'TKJ', 'XII', '', 'M.Raditya@gmail.com', '2023-07-15 00:00:00', '2023-07-15 00:00:00'),
+(25, 207474, 'MUKHAMMAD AKHADDIN', 'TKJ', 'XII', '', 'M.Akhaddin@gmail.com', '2023-07-16 00:00:00', '2023-07-16 00:00:00'),
+(26, 207475, 'RADITA ZAHWA ALLIYAH', 'TKJ', 'XII', '', 'blabla@blabla.bla', '2023-07-17 00:00:00', '2023-07-17 00:00:00'),
+(27, 207476, 'RESTA SABRINA', 'TKJ', 'XII', '', 'Resta.sabrina@gmail.com', '2023-07-18 00:00:00', '2023-07-18 00:00:00'),
 (28, 207477, 'ROYAN WILDAN NURYAMAN', 'TKJ', 'XII', '', 'royan@gmail.com', '2023-07-19 00:00:00', '2023-06-26 08:29:10'),
 (29, 207478, 'SHAFA MAULANA RAMADHANI', 'TKJ', 'XII', '', '', '2023-07-20 00:00:00', '2023-07-20 00:00:00'),
 (30, 207479, 'SYAH IRKHAM RAMADHAN', 'TKJ', 'XII', '', '', '2023-07-21 00:00:00', '2023-07-21 00:00:00'),
@@ -1148,7 +1194,7 @@ INSERT INTO `member` (`id`, `nis`, `fullname`, `jurusan`, `kelas`, `phone`, `ema
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjaman`
+-- Table structure for table `peminjaman`
 --
 
 CREATE TABLE `peminjaman` (
@@ -1161,7 +1207,7 @@ CREATE TABLE `peminjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `peminjaman`
+-- Dumping data for table `peminjaman`
 --
 
 INSERT INTO `peminjaman` (`id`, `member_id`, `book_id`, `tanggal_pinjam`, `tanggal_kembali`, `status`) VALUES
@@ -1184,7 +1230,7 @@ INSERT INTO `peminjaman` (`id`, `member_id`, `book_id`, `tanggal_pinjam`, `tangg
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penerbit`
+-- Table structure for table `penerbit`
 --
 
 CREATE TABLE `penerbit` (
@@ -1194,7 +1240,7 @@ CREATE TABLE `penerbit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penerbit`
+-- Dumping data for table `penerbit`
 --
 
 INSERT INTO `penerbit` (`id_penerbit`, `penerbit`, `keterangan`) VALUES
@@ -1206,7 +1252,7 @@ INSERT INTO `penerbit` (`id_penerbit`, `penerbit`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengadaan`
+-- Table structure for table `pengadaan`
 --
 
 CREATE TABLE `pengadaan` (
@@ -1219,7 +1265,7 @@ CREATE TABLE `pengadaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengadaan`
+-- Dumping data for table `pengadaan`
 --
 
 INSERT INTO `pengadaan` (`id_pengadaan`, `id_buku`, `asal_buku`, `jml`, `ket`, `tgl`) VALUES
@@ -1231,7 +1277,7 @@ INSERT INTO `pengadaan` (`id_pengadaan`, `id_buku`, `asal_buku`, `jml`, `ket`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengembalian`
+-- Table structure for table `pengembalian`
 --
 
 CREATE TABLE `pengembalian` (
@@ -1244,7 +1290,7 @@ CREATE TABLE `pengembalian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengembalian`
+-- Dumping data for table `pengembalian`
 --
 
 INSERT INTO `pengembalian` (`id_kembali`, `tgl_kembali`, `id_pinjam`, `terlambat`, `denda`, `id_admin`) VALUES
@@ -1253,14 +1299,14 @@ INSERT INTO `pengembalian` (`id_kembali`, `tgl_kembali`, `id_pinjam`, `terlambat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengguna`
+-- Table structure for table `pengguna`
 --
 
 CREATE TABLE `pengguna` (
   `id_user` varchar(20) NOT NULL,
   `nama` varchar(60) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
-  `pass` varchar(30) DEFAULT NULL,
+  `pass` varchar(300) DEFAULT NULL,
   `notelp` varchar(13) DEFAULT NULL,
   `status` enum('Aktif','Tidak Aktif') DEFAULT NULL,
   `level` enum('Petugas','Kepala','Administrasi') DEFAULT NULL,
@@ -1268,18 +1314,22 @@ CREATE TABLE `pengguna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengguna`
+-- Dumping data for table `pengguna`
 --
 
 INSERT INTO `pengguna` (`id_user`, `nama`, `email`, `pass`, `notelp`, `status`, `level`, `foto`) VALUES
-('U0001', 'Admin', 'admin@gmail.com', 'admin123', '087892878222', 'Aktif', 'Administrasi', 'user.png'),
-('U0003', 'Dhea Mawarni', 'dhea@gmail.com', 'petugas123', '087892871888', 'Aktif', 'Petugas', 'dhea.jpg'),
-('U0004', 'Radhian Sobarna', 'radhiantsobarna@gmail.com', 'radhiant99', '087817379229', 'Aktif', 'Kepala', 'aeng.jpeg');
+('U0001', 'Admin', 'admin@gmail.com', '$2y$10$mkTbsxd/gVxsNKRoXZ5iFevIe0X/6.ukjPAE9mz.7QXk6MLyhpJPS', '087892878222', 'Aktif', 'Administrasi', 'man2.png'),
+('U0003', 'Dhea Mawarni', 'dhea@gmail.com', '$2y$10$Gc72JueuS4pmuH/6pxHR..ZjBDaUKq8RKzM5qoD1Joy0MMbyurKza', '087892871888', 'Aktif', 'Petugas', 'man1.png'),
+('U0004', 'Radhian Sobarna', 'radhiantsobarna@gmail.com', '$2y$10$a6/SJ7dt7EkGk5vpTD27tedFm47ne7Yh7Yap3r/buqZciLsLVNfiK', '087817379229', 'Aktif', 'Kepala', 'man.png'),
+('U0005', 'MUHAMMAD RAMADITYA ', 'M.Raditya@gmail.com', '$2y$10$srRBKa/hTdlh9dOQbGUy.OiS4QQq5qdp2vjqhcsyAjcnCnaXjwDLa', NULL, NULL, '', 'man.png'),
+('U0006', 'MUKHAMMAD AKHADDIN ', 'M.Akhaddin@gmail.com', '$2y$10$eAXr4UAgVEzDBNZp7bS3yuLaTPzgpWlop7IokubYCbAnGzhosdcgG', NULL, NULL, '', 'man.png'),
+('U0007', 'RADITA ZAHWA ALLIYAH ', 'blabla@blabla.bla', '$2y$10$xI.yNuy414ZvyVPQkF1G5ujZMCu8Tk1AvTEayztl3cU2oOt8sr4xq', NULL, NULL, '', 'man.png'),
+('U0008', 'RESTA SABRINA ', 'Resta.sabrina@gmail.com', '$2y$10$XS2ILdgqqrTDZyTzYbrXxOQnSft.4ER1nSvVjnP.1C6D1rBrAvAQS', NULL, NULL, '', 'man.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perpusweb_peminjaman`
+-- Table structure for table `perpusweb_peminjaman`
 --
 
 CREATE TABLE `perpusweb_peminjaman` (
@@ -1293,7 +1343,7 @@ CREATE TABLE `perpusweb_peminjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `perpusweb_peminjaman`
+-- Dumping data for table `perpusweb_peminjaman`
 --
 
 INSERT INTO `perpusweb_peminjaman` (`id_pinjam`, `tgl_pinjam`, `id_anggota`, `tempo`, `status`, `ket`, `usr_input`) VALUES
@@ -1303,7 +1353,7 @@ INSERT INTO `perpusweb_peminjaman` (`id_pinjam`, `tgl_pinjam`, `id_anggota`, `te
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `p_buku`
+-- Table structure for table `p_buku`
 --
 
 CREATE TABLE `p_buku` (
@@ -1314,7 +1364,7 @@ CREATE TABLE `p_buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `p_buku`
+-- Dumping data for table `p_buku`
 --
 
 INSERT INTO `p_buku` (`id_pbuku`, `id_pinjam`, `id_buku`, `qty`) VALUES
@@ -1325,7 +1375,7 @@ INSERT INTO `p_buku` (`id_pbuku`, `id_pinjam`, `id_buku`, `qty`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rak`
+-- Table structure for table `rak`
 --
 
 CREATE TABLE `rak` (
@@ -1335,7 +1385,7 @@ CREATE TABLE `rak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `rak`
+-- Dumping data for table `rak`
 --
 
 INSERT INTO `rak` (`id_rak`, `rak`, `keterangan`) VALUES
@@ -1349,114 +1399,114 @@ INSERT INTO `rak` (`id_rak`, `rak`, `keterangan`) VALUES
 --
 
 --
--- Indeks untuk tabel `anggota`
+-- Indexes for table `anggota`
 --
 ALTER TABLE `anggota`
   ADD PRIMARY KEY (`id_anggota`);
 
 --
--- Indeks untuk tabel `book_dataset`
+-- Indexes for table `book_dataset`
 --
 ALTER TABLE `book_dataset`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `coba`
+-- Indexes for table `coba`
 --
 ALTER TABLE `coba`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `katalog`
+-- Indexes for table `katalog`
 --
 ALTER TABLE `katalog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nik` (`nis`);
 
 --
--- Indeks untuk tabel `peminjaman`
+-- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pengembalian`
+-- Indexes for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   ADD PRIMARY KEY (`id_kembali`);
 
 --
--- Indeks untuk tabel `pengguna`
+-- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `p_buku`
+-- Indexes for table `p_buku`
 --
 ALTER TABLE `p_buku`
   ADD PRIMARY KEY (`id_pbuku`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `book_dataset`
+-- AUTO_INCREMENT for table `book_dataset`
 --
 ALTER TABLE `book_dataset`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `coba`
+-- AUTO_INCREMENT for table `coba`
 --
 ALTER TABLE `coba`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=877;
 
 --
--- AUTO_INCREMENT untuk tabel `katalog`
+-- AUTO_INCREMENT for table `katalog`
 --
 ALTER TABLE `katalog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `member`
+-- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- AUTO_INCREMENT untuk tabel `peminjaman`
+-- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT untuk tabel `pengembalian`
+-- AUTO_INCREMENT for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
   MODIFY `id_kembali` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `p_buku`
+-- AUTO_INCREMENT for table `p_buku`
 --
 ALTER TABLE `p_buku`
   MODIFY `id_pbuku` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;

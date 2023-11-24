@@ -20,7 +20,7 @@ class Home extends CI_Controller {
 		$data['title'] = 'Dashboard';
 
 		$data['jmlpinjam'] = $this->peminjaman_model->data()->num_rows();
-		$data['jmlanggota'] = $this->member_model->all_member()->num_rows();
+		$data['jmlanggota'] = $this->anggota_model->data()->num_rows();
 		$data['jmlpengadaan'] = $this->pengadaan_model->data()->num_rows();
 		$data['jmlbuku'] = $this->buku_model->data()->num_rows();
 		$data['top3buku'] = $this->peminjaman_model->top3buku()->result();

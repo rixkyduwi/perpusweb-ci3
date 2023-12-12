@@ -58,15 +58,31 @@ class Register extends CI_Controller {
 			// 	'role' => "siswa",
 			// 	'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Hash password
 			// ];
+			$nama = $this->input->post('firstname')." ".$this->input->post('lastname');
 			$kode = $this->user_model->buat_kode(); 
+			$token = bin2hex(random_bytes(50)); // generate unique token
 			$newData = [
 				'id_user'=> $kode,
-				'nama' => $this->input->post('firstname')." ".$this->input->post('lastname'),
+				'nama' => $nama,
 				'email' => $email,
 				'level' => "siswa",
 				'pass' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Hash password
-				'foto' => 'man.png'
+				'foto' => 'man.png',
+				'token' => $token
 			];
+			$emailBody = "";
+			$emailBody = $emailBody ."Hello  " . $nama . ",\n<br />";
+			$emailBody = $emailBody .'Thanks so much for joining us. <br><br>To get started <a href="https://www.sitename.com/verification?email='.$email.'&token='.$token.'">Verify your account</a><br><br> OR copy and past the following code on your browser:<br>http://127.0.0.1/verification?email='.$email.'&token='.$token.' <br><br>to continue.<br><br>Thanks for signing up into the system. <br />';
+
+			// Sending mail
+			$to = "$email"; 
+			$from = "pustakagamasmkn3tegal <noreply@pustakagamasmkn3tegal.my.id>"; 
+			$subject = 'Verify Your Email Address'; 
+			//$message = ""; 
+			$headers = "From: $from\n"; 
+			$headers .= "MIME-Version: 1.0\n"; 
+			$headers .= "Content-type: text/html; charset=iso-8859-1\n"; 
+			mail($to, $subject, $emailBody, $headers);
 			$this->db->insert('pengguna', $newData);
 	
 			$this->session->set_flashdata('success', 'Successful Registration');

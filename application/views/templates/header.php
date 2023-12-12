@@ -16,7 +16,7 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" href="<?= base_url(); ?>assets/icon/books.png">
 
-    <title>PERPUSWEB | <?= $title ?></title>
+    <title>PUSTAKAGAMA | <?= $title ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>assets/sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"

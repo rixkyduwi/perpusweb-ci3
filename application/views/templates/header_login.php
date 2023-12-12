@@ -22,7 +22,7 @@
     <link href="<?= base_url(); ?>assets/loading/loader.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url(); ?>assets/css/all.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/animate/animate.min.css" rel="stylesheet">
-    <title>PERPUSWEB | <?= $title  ?></title>
+    <title>PUSTAKAGAMA | <?= $title  ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>assets/sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"

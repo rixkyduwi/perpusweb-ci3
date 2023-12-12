@@ -31,6 +31,7 @@ function cek_user(email, pwd){
         contentType: 'application/json',
         data: JSON.stringify(datajson),
         success: function(hasil) {
+            console.log(hasil);
             if(hasil.respon == 'success'){
                 pesan('Berhasil Login!', 'success', 'true');
                 $("#login").text("Login");

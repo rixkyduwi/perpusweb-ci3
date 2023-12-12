@@ -27,12 +27,13 @@ class Login extends CI_Controller {
 	{
 		$json_data = file_get_contents("php://input");
 		$data = json_decode($json_data, true);
+		header('Content-Type: application/json');
 		$email = $data["email"];
 		$password =  $data["password"];
 		// Validasi input
 		if (empty($email) || empty($password)) {
 			$response = array('respon' => 'error', 'message' => 'email dan password harus diisi');
-			echo $response;
+			echo json_encode($response);
 		} else {
 			// Query database untuk mengambil data pengguna berdasarkan email
 			$user = $this->db->get_where('pengguna', ['email' => $email])->row_array();
@@ -54,14 +55,14 @@ class Login extends CI_Controller {
 					$this->session->set_userdata($sessi);
 		
 					$response = array('respon' => 'success');
-					echo $response;
+					echo json_encode($response);
 				} else {
 					$response = array('respon' => 'error', 'message' => 'Password salah');
-					echo $response;
+					echo json_encode($response);
 				}
 			} else {
 				$response = array('respon' => 'error', 'message' => 'email tidak ditemukan');
-				echo $response;
+				echo json_encode($response);
 			}
 		}
 		

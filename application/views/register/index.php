@@ -4,8 +4,13 @@
       <div class="container">
         <h3>Register</h3>
         <hr>
+        <?php if ($this->session->flashdata('validation_errors')): ?>
+          <div class="alert alert-danger" role="alert">
+            <?= $this->session->flashdata('validation_errors'); ?>
+          </div>
+        <?php endif; ?>
         <form class="" action="<?= base_url() ?>register/proses_register" method="post">
-          <div class="row">
+        <div class="row">
           <div class="col-lg-12 form-group">
                <label for="firstname">Cek nis </label>
                <input type="number" name="member_id" id="member_id" class="form-control" placeholder="ID" value="<?= set_value('member_id') ?>"><br>
@@ -25,12 +30,12 @@
           
               <div class="col-lg-12 form-group">
                <label for="kelas">Kelas</label>
-               <input type="text" class="form-control" name="kelas" id="kelas" value="<?= set_value('kelas') ?>">
+               <input type="text" class="form-control" name="kelas" id="kelas" value="">
               
 </div>
               <div class="col-lg-12 form-group">
                <label for="jurusan">Jurusan</label>
-               <input type="text" class="form-control" name="jurusan" id="jurusan" value="<?= set_value('jurusan') ?>">
+               <input type="text" class="form-control" name="jurusan" id="jurusan" value="">
               </div>
               <div class="col-lg-12 form-group">
                <label for="email">Email</label>

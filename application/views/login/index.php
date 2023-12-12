@@ -25,7 +25,7 @@
                 <form class="user">
                     <div class="form-group">
                         <label for="user">email :</label>
-                        <input type="text" class="form-control " id="user" name="user" aria-describedby="usernameHelp"
+                        <input type="text" class="form-control " id="email" name="email" aria-describedby="usernameHelp"
                             placeholder="Masukan Email" autocomplete="off">
                     </div>
                     <div class="form-group">

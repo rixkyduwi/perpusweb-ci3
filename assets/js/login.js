@@ -1,47 +1,49 @@
 function proses_login() {
 
-    var usr = $("[name='user']").val();
+    var email = $("[name='email']").val();
     var pwd = $("[name='pwd']").val();
 
-    if (usr == "") {
-        validasi('Username masih kosong!', 'warning');
+    if (email == "") {
+        validasi('Email masih kosong!', 'warning');
         return false;
     } else if (pwd == '') {
         validasi('Password masih kosong!', 'warning');
         return false;
     } else{
-        cek_user(usr, pwd);
+        cek_user(email, pwd);
     }
 
 }
 
-function cek_user(usr, pwd){
+function cek_user(email, pwd){
     var link = $('#baseurl').val();
     var base_url = link + 'login/proses_login';
     console.log(base_url)
     $("#login").text("Memuat...");
-
+    var datajson = {
+        email:email,
+        password:pwd
+    };
+    console.log(datajson)
     $.ajax({
         type: 'POST',
-        data: {
-            user:usr,
-            pwd:pwd
-        },
         url: base_url,
-        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(datajson),
         success: function(hasil) {
-            console.log(hasil)
             if(hasil.respon == 'success'){
                 pesan('Berhasil Login!', 'success', 'true');
                 $("#login").text("Login");
             }else{
-                pesan(hasil.respon , 'error', 'false');
+                pesan(hasil.message , 'error', 'false');
                 $("#login").text("Login");
                 
             }
         },
         error: function(request, status, error) {
-            pesan('server error!'+status, 'error', 'false');
+            console.log(request)
+            console.log(status)
+            pesan('server error!'+error, 'error', 'false');
             $("#kirim").text("Submit");    
         }
     });

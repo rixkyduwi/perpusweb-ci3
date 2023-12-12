@@ -27,16 +27,20 @@ class Register extends CI_Controller {
 	}
 	public function proses_register()
 	{
-		$data = [];
+		
 		// Validasi input di sini
 		$this->form_validation->set_rules('firstname', 'First Name', 'required|min_length[3]|max_length[20]');
 		$this->form_validation->set_rules('lastname', 'Last Name', 'required|min_length[3]|max_length[20]');
-		$this->form_validation->set_rules('email', 'Username', 'required|min_length[3]|max_length[100]|is_unique[login.username]');
+		$this->form_validation->set_rules('email', 'Email', 'required|min_length[3]|max_length[100]|is_unique[pengguna.email]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[255]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'matches[password]');
 	
 		if ($this->form_validation->run() == false) {
 			$data['validation_errors'] = validation_errors();
+			$this->session->set_flashdata('validation_errors', validation_errors());
+
+			// Redirect ke halaman registrasi
+			redirect('register');
 		} else {
 			$nis = $this->input->post('member_id');
 			$email = $this->input->post('email');
@@ -48,7 +52,8 @@ class Register extends CI_Controller {
 			if ($this->db->where($where)->update('member', ['email' => $email])) {
 				// Sukses
 			} else {
-				echo "server error";
+				log_message('error', 'Server error: Unable to update member email.');
+				show_error('Server error. Please try again later.', 500, 'Server Error');			
 			}
 	
 			// $newData = [
@@ -61,6 +66,7 @@ class Register extends CI_Controller {
 			$nama = $this->input->post('firstname')." ".$this->input->post('lastname');
 			$kode = $this->user_model->buat_kode(); 
 			$token = bin2hex(random_bytes(50)); // generate unique token
+			echo $token;
 			$newData = [
 				'id_user'=> $kode,
 				'nama' => $nama,
@@ -82,12 +88,18 @@ class Register extends CI_Controller {
 			$headers = "From: $from\n"; 
 			$headers .= "MIME-Version: 1.0\n"; 
 			$headers .= "Content-type: text/html; charset=iso-8859-1\n"; 
-			mail($to, $subject, $emailBody, $headers);
+			try {
+				mail($to, $subject, $emailBody, $headers);
+			} catch (Exception $e) {
+				log_message('error', 'Email sending failed: ' . $e->getMessage());
+				show_error('Email sending failed. Please contact support.', 500, 'Email Error');
+			}
 			$this->db->insert('pengguna', $newData);
 	
 			$this->session->set_flashdata('success', 'Successful Registration');
 			return redirect('login');
 		}
+		return redirect('login');
 	}
 	
 	public function findMember()

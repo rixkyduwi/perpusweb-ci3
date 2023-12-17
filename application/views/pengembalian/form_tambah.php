@@ -37,10 +37,21 @@
                                 <input type="hidden" name="denda" >
                                 <select name="pinjam" class="form-control chosen" onchange="ambilDataPinjam()">
                                     <option value="">--Pilih--</option>
+                                    
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                     <?php foreach($pinjam as $p): ?>
                                     <option value="<?= $p->id_pinjam?>"><?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>
                                     </option>
+                                    <?php endforeach; ?>
+                                <?php elseif($this->session->userdata('level') == 'siswa'):?>
+                                    <?php foreach($pinjam as $p): ?>
+                                    
+                                <?php if($p->nama_lengkap==$this->session->userdata('nama')) :?>
+                                    <option value="<?= $p->id_pinjam?>"><?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>
+                                    </option>
+                                    <?php endif ;?>
                                     <?php endforeach ?>
+                                <?php endif ?>
                                 </select>
                             </div>
                             <div class="col-lg">

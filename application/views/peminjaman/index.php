@@ -58,6 +58,7 @@ function tgl_indo($tanggal){
                             </tr>
                         </thead>
                         <tbody id="tbody">
+                            <?php if($this->session->userdata('level') == 'admin'):?>
                             <?php $no=1; foreach ($pinjam as $p): ?>
                             <tr>
                                 <td><?= $no++ ?>.</td>
@@ -91,6 +92,47 @@ function tgl_indo($tanggal){
                                 </td>
                             </tr>
                             <?php endforeach; ?>
+                            <?php elseif($this->session->userdata('level') == "siswa" ):?>
+                            <?php $no=1; foreach ($pinjam as $p): ?>
+                            <?php if($p->nama_lengkap == $this->session->userdata('nama')):?>
+                            <tr>
+                                <td><?= $no++ ?>.</td>
+                                <td><?= $p->id_pinjam ?></td>
+                                <td><?= tgl_indo($p->tgl_pinjam) ?></td>
+                                <td><?= $p->nama_lengkap ?></td>
+                                <td><?= tgl_indo($p->tempo) ?></td>
+                                <td>
+                                    <?php if($p->status == 'Pinjam'): ?>
+                                    <span class="badge badge-primary">
+                                    <?php else: ?>
+                                    <span class="badge badge-success">
+                                    <?php endif; ?>
+                                        <?= $p->status ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <?php if($p->ket == ''): ?>
+                                    <i> (Tidak diisi) </i>
+                                    <?php else: ?>
+                                    <?= $p->ket ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <a href="<?= base_url() ?>peminjaman/detail/<?= $p->id_pinjam ?>"
+                                        class="btn btn-primary btn-sm btn-circle"><i class="fa fa-eye"></i></a>
+                                <?php if($this->session->userdata('level') == 'admin'):?>
+                                    <a href="#" onclick="konfirmasi('<?= $p->id_pinjam ?>')"
+                                        class="btn btn-circle btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    
+                                <?php endif; ?>
+                                </td>
+                            </tr>
+                            
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

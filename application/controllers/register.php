@@ -49,7 +49,7 @@ class Register extends CI_Controller {
 				'nis' => $nis
 			];
 	
-			if ($this->db->where($where)->update('member', ['email' => $email])) {
+			if ($this->db->where($where)->update('anggota', ['email' => $email])) {
 				// Sukses
 			} else {
 				log_message('error', 'Server error: Unable to update member email.');

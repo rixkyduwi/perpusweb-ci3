@@ -52,9 +52,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>home">
                 <div class="sidebar-brand-icon ">
-                    <img src="<?= base_url(); ?>assets/icon/books.png" width="50">
+                    <img src="<?= base_url(); ?>assets/icon/books2.png" width="50">
                 </div>
-                <div class="sidebar-brand-text mx-3 ">PEPRUS <sup><b>WEB</b></sup></div>
+                <div class="sidebar-brand-text mx-3 ">PUSTAKA <sup><b>GAMA</b></sup></div>
                 
             </a>
 
@@ -106,16 +106,19 @@
                 </div>
             </li>
 
+            <?php if($this->session->userdata('level') == 'admin'):?>
             <?php if($title == 'Pengadaan'): ?>
             <li class="nav-item active">
                 <?php else: ?>
             <li class="nav-item">
                 <?php endif; ?>
+                
                 <a class="nav-link" href="<?= base_url() ?>pengadaan">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                     <span>Pengadaan Buku</span>
                 </a>
             </li>
+            <?php endif; ?>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <?php if($title == 'Peminjaman' or $title == 'Pengembalian'): ?>

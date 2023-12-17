@@ -41,10 +41,11 @@ class Login extends CI_Controller {
 			if ($user) {
 				// Memeriksa apakah password cocok dengan hash yang disimpan dalam database
 				if (password_verify($password, $user['pass'])) {
-					$member = $this->db->get_where('member', ['email' => $email])->row_array();
+					$member = $this->db->get_where('anggota', ['email' => $email])->row_array();
 		
 					$sessi = array(
 						'id_user' => $user['id_user'],
+						'id_member' => $member['id_anggota'],
 						'nis' => $member['nis'],
 						'nama' => $user['nama'],
 						'email' => $user['email'],

@@ -4,12 +4,14 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Buku</h1>
+        <?php if($this->session->userdata('level') == 'admin'):?>
         <a href="<?= base_url() ?>buku/tambah"  class="btn btn-sm btn-primary btn-icon-split">
             <span class="text text-white">Tambah Data</span>
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
         </a>
+        <?php endif; ?>
     </div>
 
     <div class="col-lg-12 mb-4" id="container">
@@ -28,7 +30,9 @@
                                 <th>Stok</th>
                                 <th>Kategori</th>
                                 <th>Rak</th>
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody style="cursor:pointer;">
@@ -60,6 +64,7 @@
                                 </td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->kategori ?></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->rak ?></td>
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
                                     <center>
                                         <a href="<?= base_url() ?>buku/ubah/<?= $b->id_buku ?>"
@@ -72,6 +77,7 @@
                                         </a>
                                     </center>
                                 </td>
+                                <?php endif; ?>
                             </tr>
                             <?php } ?>
                         </tbody>

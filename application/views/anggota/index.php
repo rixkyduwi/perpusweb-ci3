@@ -4,12 +4,14 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Anggota</h1>
+        <?php if($this->session->userdata('level') == 'admin'):?>
         <a href="<?= base_url() ?>anggota/tambah" class="btn btn-sm btn-primary btn-icon-split">
             <span class="text text-white">Tambah Data</span>
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
         </a>
+        <?php endif; ?>
 
     </div>
 
@@ -25,11 +27,15 @@
                                 <th width="1%">No</th>
                                 <th>Foto</th>
                                 <th>Nama Lengkap</th>
+                                <th>Kelas</th>
+                                <th>Jurusan</th>
                                 <th>No.Telepon</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Umur</th>
-                                <th>Alamat</th>
+                                <th>Alamat</th>            
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody style="cursor:pointer;" id="tbody"> 
@@ -39,10 +45,13 @@
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><img style="border-radius: 5px;" src="assets/upload/anggota/<?= $a->foto ?>" alt=""
                                         width="75px"></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->nama_lengkap ?></td>
+                                <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->kelas ?></td>
+                                <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->jurusan ?></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->notelp ?></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->jk ?></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->umur ?></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->alamat ?></td>
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
                                     <center>
                                         <a href="<?= base_url() ?>anggota/ubah/<?= $a->id_anggota ?>"
@@ -55,6 +64,8 @@
                                         </a>
                                     </center>
                                 </td>
+                                <?php endif; ?>
+
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

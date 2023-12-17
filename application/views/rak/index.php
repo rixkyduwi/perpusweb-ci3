@@ -5,12 +5,14 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Rak</h1>
 
+        <?php if($this->session->userdata('level') == 'admin'):?>
         <a href="" data-toggle="modal" data-target="#form" class="btn btn-sm btn-primary btn-icon-split">
             <span class="text text-white">Tambah Data</span>
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
         </a>
+        <?php endif; ?>
 
     </div>
 
@@ -27,7 +29,9 @@
                                 <th>Nomor Rak</th>
                                 <th>Nama Rak</th>
                                 <th>Keterangan</th>
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody id="tbody">
@@ -58,6 +62,7 @@
                                     <?= $r->keterangan ?>
                                     <?php endif; ?>
                                 </td>
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
                                     <center>
                                         <a href="#" data-toggle="modal" data-target="#formU"
@@ -70,6 +75,7 @@
                                         </a>
                                     </center>
                                 </td>
+                                <?php endif; ?>
                             </tr>
                             <?php } ?>
 

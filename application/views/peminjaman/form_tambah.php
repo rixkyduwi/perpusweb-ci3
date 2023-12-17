@@ -78,10 +78,17 @@
                         <div class="input-group mb-4">
                             <select name="anggota" class="form-control chosen" onchange="ambilAnggota()">
                                 <option value="">--Pilih Anggota--</option>
+                                
+                                <?php if($this->session->userdata('level')=='admin') :?>
                                 <?php foreach($anggota as $a): ?>
                                 <option value="<?= $a->id_anggota?>">[<?= $a->id_anggota ?>] <?= $a->nama_lengkap ?>
                                 </option>
                                 <?php endforeach ?>
+                                <?php else: ?>
+                                <option value="<?= $this->session->userdata('id_member')?>">[<?= $this->session->userdata('id_member') ?>] <?= $this->session->userdata('nama') ?>
+                                </option>
+                                <?php endif; ?>
+
                             </select>
                         </div>
 

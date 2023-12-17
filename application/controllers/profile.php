@@ -94,6 +94,13 @@ class Profile extends CI_Controller {
 		$where = array('id_user'=>$kode);
 	  
 		  $this->user_model->ubah_data($where, $data, 'pengguna');
+		  $where = array('nis'=>$this->session->userdata('nis') );
+		  if ($this->db->where($where)->update('anggota', ['email' => $email])) {
+		  	// Sukses
+		  } else {
+		  	log_message('error', 'Server error: Unable to update member email.');
+		  	show_error('Server error. Please try again later.', 500, 'Server Error');			
+		  }
 		  $this->session->set_flashdata('Pesan','
 			<script>
 			$(document).ready(function() {

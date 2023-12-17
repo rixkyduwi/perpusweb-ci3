@@ -29,11 +29,37 @@
                                 <th>Jatuh Tempo</th>
                                 <th>Terlambat</th>
                                 <th>Denda</th>
+                                
+                                <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
+                            
+                        <?php if($this->session->userdata('level') == 'admin'):?>
+                        <?php $no = 1; foreach ($pengembalian as $p) : ?>
+                               <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $p->tgl_kembali ?></td>
+                                    <td><?= $p->id_pinjam ?></td>
+                                    <td><?= $p->nama_lengkap ?></td>
+                                    <td><?= $p->tgl_pinjam ?></td>
+                                    <td><?= $p->tempo ?></td>
+                                    <td><?= $p->terlambat ?></td>
+                                    <td><?= $p->denda ?></td>
+                                    <td>
+                                        <a href="#" onclick="konfirmasi('<?= $p->id_kembali ?>')"
+                                        class="btn btn-circle btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php elseif($this->session->userdata('level') == 'siswa'):?>        
                             <?php $no = 1; foreach ($pengembalian as $p) : ?>
+                                
+                            <?php if( $p->nama_lengkap == $this->session->userdata('nama') ) :?>
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $p->tgl_kembali ?></td>
@@ -43,14 +69,11 @@
                                 <td><?= $p->tempo ?></td>
                                 <td><?= $p->terlambat ?></td>
                                 <td><?= $p->denda ?></td>
-                                <td>
-                                    <a href="#" onclick="konfirmasi('<?= $p->id_kembali ?>')"
-                                        class="btn btn-circle btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
                             </tr>
+                            <?php endif; ?>
                             <?php endforeach; ?>
+                            
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

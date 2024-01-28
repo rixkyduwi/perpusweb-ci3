@@ -42,6 +42,8 @@
                                 
                                 <?php if($u->status == 'Aktif'): ?>
                                     <span class="badge badge-success badge-md">
+                                    <?php elseif($u->status == 'lulus'): ?>
+                                    <span class="badge badge-danger badge-md">
                                     <?php else: ?>
                                     <span class="badge badge-secondary badge-md">
                                     <?php endif; ?>

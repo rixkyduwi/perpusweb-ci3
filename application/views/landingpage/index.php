@@ -7,6 +7,7 @@
             redirect('home');
             exit;
 	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +27,7 @@
         <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
+    <?php  ?>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#1561b2;" id="mainNav">
             <div class="container">
@@ -40,6 +42,7 @@
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Galeri</a></li>
                         <li class="nav-item"><a class="nav-link" href="#maps">Maps</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Buku Terbaru">Buku Tebaru</a></li>
                     </ul>
                 </div>
             </div>
@@ -200,6 +203,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Portfolio item 2 modal popup-->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -270,6 +274,25 @@ Berikut adalah beberapa kata kunci yang terkait dengan sistem informasi perpusta
                 </div>
             </div>
         </div>
+        <li>
+        <!-- -->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="<?= base_url() ?>assets/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Kunjungan Studi Tour III</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="<?= base_url() ?>assets/assets/img/portfolio/3.jpg" alt="..." />
+                                    <p>Kunjungan studi tour Pustakawan SMAN 1 Tegal di Perpustakaan "Pustaka Gama" SMKN 3 Tegal dalam rangka persiapan Akreditasi Perpustakaan SMAN 1 Tegal
+Berikut adalah beberapa kata kunci yang terkait dengan sistem informasi perpustakaan:</p>
+                                   
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
         <!-- Portfolio item 4 modal popup-->
 
         <!-- Bootstrap core JS-->

@@ -29,7 +29,6 @@ class Home extends CI_Controller {
 		$data['yearnow']=date('Y', strtotime('+0 year'));
 		$data['previousyear']=date('Y', strtotime('-1 year'));
 		$data['twoyearago']=date('Y', strtotime('-2 year'));
-
 		$this->load->view('templates/header', $data);
 		$this->load->view('home/index');
 		$this->load->view('templates/footer');

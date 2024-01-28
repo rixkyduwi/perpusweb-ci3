@@ -17,6 +17,8 @@ class Login extends CI_Controller {
 	{
 		
 		$data['title'] = "Login";
+		// $pswd = password_hash("123456", PASSWORD_DEFAULT); 
+		// echo $pswd;
 		$this->load->view('templates/header_login',$data);
 		$this->load->view('login/index');
 		$this->load->view('templates/footer_login');

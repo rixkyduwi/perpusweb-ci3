@@ -58,10 +58,10 @@
                             <div class="form-group"><label>Level</label>
                                 <select name="level" class="form-control">
                                     <option value="">--Pilih--</option>
-                                    <option value="Administrasi">Administrasi</option>
+                                    <option value="admin">Administrasi</option>
                                     <option value="Petugas">Petugas</option>
                                     <option value="Kepala">Kepala</option>
-                                    <option value="Siswa">Siswa</option>
+                                    <option value="siswa">Siswa</option>
                                 </select>
                             </div>
 

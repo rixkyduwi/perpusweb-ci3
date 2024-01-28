@@ -96,6 +96,7 @@ class Register extends CI_Controller {
 				show_error('Email sending failed. Please contact support.', 500, 'Email Error');
 			}
 			$this->db->insert('pengguna', $newData);
+			$this->session->set_flashdata('gagal', 'Nis tidak ditemukan,');
 	
 			$this->session->set_flashdata('success', 'Successful Registration');
 			return redirect('login');
@@ -104,23 +105,34 @@ class Register extends CI_Controller {
 	}
 	
 	public function findMember()
-	{
-		$data = [];
-		$id = $this->input->post('id');
-		$where = array(
-			'nis' => $id
-		);
-		$member = $this->db->get_where('anggota', $where)->row_array(); // Mengambil data anggota berdasarkan nis
-		$newData = [
-			'fullname' => $member['nama_lengkap'],
-			'kelas' => $member['kelas'],
-			'jurusan' => $member['jurusan'],
-		];
-		if ($member) {
-			echo json_encode($newData, true);; //ketika Anda ingin mengirim data dari server ke aplikasi klien atau sebaliknya, dan JSON sering digunakan karena kemudahan pembacaannya oleh berbagai bahasa pemrograman.
-		} else {
-			echo "tidak ditemukan";
-		}
-	}
+{
+    try {
+        $data = [];
+        $id = $this->input->post('id');
+        $where = array(
+            'nis' => $id
+        );
+        $member = $this->db->get_where('anggota', $where)->row_array(); // Mengambil data anggota berdasarkan nis
+
+        if ($member) {
+            $newData = [
+                'fullname' => $member['nama_lengkap'],
+                'kelas' => $member['kelas'],
+                'jurusan' => $member['jurusan'],
+            ];
+            echo json_encode($newData, true); //ketika Anda ingin mengirim data dari server ke aplikasi klien atau sebaliknya, dan JSON sering digunakan karena kemudahan pembacaannya oleh berbagai bahasa pemrograman.
+        } else {
+            echo "tidak ditemukan";
+        }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+	// if ($member) {
+	// 	echo json_encode($newData, true);; //ketika Anda ingin mengirim data dari server ke aplikasi klien atau sebaliknya, dan JSON sering digunakan karena kemudahan pembacaannya oleh berbagai bahasa pemrograman.
+	// } else {
+	// 	echo "email tidak diketemukan";
+	// }
 	
 }

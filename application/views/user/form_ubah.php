@@ -57,8 +57,8 @@
                             <!-- Level -->
                             <div class="form-group"><label>Level</label>
                                 <select name="level" class="form-control">
-                                    <option value="Administrasi" 
-                                    <?php if($u->level == "Administrasi"): ?> Selected <?php endif; ?> >Administrasi</option>
+                                    <option value="admin" 
+                                    <?php if($u->level == "admin"): ?> Selected <?php endif; ?> >Administrasi</option>
                                     <option value="Petugas" 
                                     <?php if($u->level == "Petugas"): ?> Selected <?php endif; ?> >Petugas</option>
                                     <option value="Kepala" 
@@ -73,6 +73,8 @@
                                     <?php if($u->status == "Aktif"): ?> Selected <?php endif; ?> >Aktif</option>
                                     <option value="Tidak Aktif" 
                                     <?php if($u->status == "Tidak Aktif"): ?> Selected <?php endif; ?> >Tidak Aktif</option>
+                                        <option value="lulus" 
+                                    <?php if($u->status == "lulus"): ?> Selected <?php endif; ?> >lulus</option>
                                 </select>
                             </div>
 

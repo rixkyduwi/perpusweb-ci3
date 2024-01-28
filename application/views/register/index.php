@@ -71,7 +71,9 @@
     </div>
   </div>
 </div>
+
 <script>
+  
 function cekMember() {
     var formData = new FormData();
     formData.append('id', $('#member_id').val());
@@ -82,34 +84,86 @@ function cekMember() {
         success: function (data) {
           console.log(data);
           if (data=="tidak ditemukan"){
-            alert("nis tidak ditemukan");
+            let timerInterval
+        Swal.fire({
+            title: 'NIS tidak ditemukan',
+            timer: 1000,
+  dangerMode: true,
+            onClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            $("#card").addClass("bounceIn");
+        })
             $('#sbmtbtn').addClass("disabled");
             $('#sbmtbtn').attr('type','button');
           }
           else if (data=="anda sudah daftar silahkan login"){
-            alert(data);
+            let timerInterval
+        Swal.fire({
+            title: 'Anda sudah daftar silahkan login...',
+            timer: 1000,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+            onClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            $("#card").addClass("bounceIn");
+        })
             $('#sbmtbtn').addClass("disabled");
             $('#sbmtbtn').attr('type','button');
           }
           else{
-            $('#sbmtbtn').attr('type','submit');
-            $('#sbmtbtn').removeClass('disabled');
-            $('#sbmtbtn').attr('type','submit');
-            const array =JSON.parse(data);
-            const myArray = array['fullname'].split(" ");
-            console.log(myArray)
-            let word = myArray[0];
-            $("#firstname").val(word);
-            var lastword=""
-            for (i in myArray){
-              if(i==0){}
-              else if(i==myArray.length){lastword+=String(myArray[i])}
-              else{ lastword+= String(myArray[i])+" ";}
-            }
-            $("#lastname").val(lastword);
-            $("#kelas").val(array['kelas']);
-            $("#jurusan").val(array['jurusan']);
+            try {
+                $('#sbmtbtn').attr('type', 'submit');
+                $('#sbmtbtn').removeClass('disabled');
+                $('#sbmtbtn').attr('type', 'submit');
 
+                const array = JSON.parse(data);
+                const myArray = array['fullname'].split(" ");
+                console.log(myArray);
+                let word = myArray[0];
+                $("#firstname").val(word);
+                var lastword = "";
+                for (let i in myArray) {
+                    if (i == 0) { }
+                    else if (parseInt(i) === myArray.length - 1) {  // Fix the condition for the last element
+                        lastword += String(myArray[i]);
+                    } else {
+                        lastword += String(myArray[i]) + " ";
+                    }
+                }
+                $("#lastname").val(lastword);
+                $("#kelas").val(array['kelas']);
+                $("#jurusan").val(array['jurusan']);
+                let timerInterval
+        Swal.fire({
+            title: 'NIS ditemukan',
+            timer: 1000,
+            icon: "success",
+            onClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            $("#card").addClass("bounceIn");
+        })
+            } catch (error) {
+                console.error("Error:", error.message);
+                let timerInterval
+        Swal.fire({
+            title: "Error:"+error.message,
+            timer: 1000,
+            icon: "danger",
+            onClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            $("#card").addClass("bounceIn");
+        })
+                // Handle the error as needed, e.g., display an error message to the user.
+            }
           }
           },
         cache: false,

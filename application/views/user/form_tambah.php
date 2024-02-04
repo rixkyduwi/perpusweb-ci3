@@ -62,6 +62,7 @@
                                     <option value="Petugas">Petugas</option>
                                     <option value="Kepala">Kepala</option>
                                     <option value="siswa">Siswa</option>
+                                    <option value="Guru">Guru</option>
                                 </select>
                             </div>
 

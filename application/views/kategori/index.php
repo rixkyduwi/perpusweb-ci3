@@ -28,6 +28,7 @@
                                 <th width="1%">No</th>
                                 <th>Nama Kategori</th>
                                 <th>Keterangan</th>
+                                <th>ID Kategori</th>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
                                 <?php endif; ?>
@@ -51,6 +52,8 @@
                                     <?= $k->keterangan ?>
                                     <?php endif; ?>
                                 </td>
+                                <td>
+                                    <?= $k->id_kategori ?>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
                                     <center>

@@ -24,8 +24,10 @@
                         <thead>
                             <tr>
                                 <th width="1%">No</th>
+                                <th style="display:none">ISBN</th>
                                 <th>Foto</th>
                                 <th>Judul Buku</th>
+                                <th>penulis</th>
                                 <th>Penerbit</th>
                                 <th>Stok</th>
                                 <th>Kategori</th>
@@ -39,9 +41,11 @@
                             <?php $no=1; foreach ($buku as $b) { ?>
                             <tr>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $no++ ?>.</td>
+                                <td style="display:none"><?= $b->isbn ?></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><img style="border-radius: 5px;"
                                         src="assets/upload/buku/<?= $b->foto ?>" alt="" width="75px"></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->judul ?></td>
+                                <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->pengarang?></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->penerbit?></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')">
                                 <?php  

@@ -73,7 +73,7 @@ class Register extends CI_Controller {
 				'email' => $email,
 				'level' => "siswa",
 				'status' => "Tidak Aktif",
-				'pass' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Hash password
+				'pass' => $this->input->post('password'), // Hash password password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 				'foto' => 'man.png',
 				'token' => $token
 			];

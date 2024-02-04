@@ -27,11 +27,13 @@ class Penerbit extends CI_Controller {
 		$kode = 	$this->penerbit_model->buat_kode();
 		$penerbit = $this->input->post('penerbit');
 		$ket = 		$this->input->post('ket');
+		$link = 	$this->input->post('link');
 		
 		$data=array(
 			'id_penerbit'=>$kode,
 			'penerbit'=> $penerbit,
-			'keterangan'=>$ket
+			'keterangan'=>$ket,
+			'link'=>$link
 		);
 
 		$this->penerbit_model->tambah_data($data, 'penerbit');

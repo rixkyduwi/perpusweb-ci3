@@ -17,6 +17,7 @@ $route['boq'] = 'Boq/index';
 $route['login'] = 'Login/index';
 $route['register'] = 'Register/index';
 $route['peminjaman'] = 'Peminjaman/index';
+$route['about'] = 'About/index';
 $route['pengembalian'] = 'Pengembalian/index';
 //user
 $route['user'] = 'User/index';

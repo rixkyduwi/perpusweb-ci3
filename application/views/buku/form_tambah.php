@@ -1,9 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
     <form action="<?= base_url() ?>buku/proses_tambah" name="myForm" method="POST" enctype="multipart/form-data"
         onsubmit="return validateForm()">
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-sm-flex">
@@ -19,9 +17,7 @@
                     <i class="fas fa-save"></i>
                 </span>
             </button>
-
         </div>
-
         <div class="d-sm-flex  justify-content-between mb-0">
             <div class="col-lg-8 mb-4">
                 <!-- Illustrations -->
@@ -93,12 +89,10 @@
                         </div>
 
                         <div class="col-lg-12">
-
                             <!-- Sinopsis -->
                             <div class="form-group"><label>Sinopsis</label>
                                 <textarea class="form-control" name="sinopsis" type="text" placeholder=""></textarea>
                             </div>
-
                             <!-- Penerbit -->
                             <?php if($jmlPenerbit > 0): ?>
                             <div class="form-group"><label>Penerbit</label>
@@ -122,7 +116,6 @@
                                 </div>
                             </div>
                             <?php endif; ?>
-
                             <!-- Rak -->
                             <?php if($jmlRak > 0): ?>
                             <div class="form-group"><label>Rak</label>
@@ -146,16 +139,11 @@
                                 </div>
                             </div>
                             <?php endif; ?>
-
                         </div>
-
-
                         <br>
                     </div>
                 </div>
-
             </div>
-
             <div class="col-lg-4 mb-4">
                 <!-- Illustrations -->
                 <div class="card border-bottom-primary shadow mb-4">
@@ -191,41 +179,31 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
     </form>
-
 </div>
 <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
 
-
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/buku.js"></script>
 <script src="<?= base_url(); ?>assets/js/loading.js"></script>
 <script src="<?= base_url(); ?>assets/js/validasi/formbuku.js"></script>
 <script src="<?= base_url(); ?>assets/plugin/chosen/chosen.jquery.min.js"></script>
-
 <script>
 $('.chosen').chosen({
     width: '100%',
 
 });
 </script>
-
 <?php if($this->session->flashdata('Pesan')): ?>
-
 <?php else: ?>
 <script>
 $(document).ready(function() {
-
     $('#pdf').hide();
-
     let timerInterval
     Swal.fire({
         title: 'Memuat...',

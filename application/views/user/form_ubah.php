@@ -63,6 +63,10 @@
                                     <?php if($u->level == "Petugas"): ?> Selected <?php endif; ?> >Petugas</option>
                                     <option value="Kepala" 
                                     <?php if($u->level == "Kepala"): ?> Selected <?php endif; ?> >Kepala</option>
+                                     <option value="Guru" 
+                                     <?php if($u->level == "Guru"): ?> Selected <?php endif; ?> >Guru</option>
+                                        <option value="siswa" 
+                                     <?php if($u->level == "siswa"): ?> Selected <?php endif; ?> >Siswa</option>
                                 </select>
                             </div>
 

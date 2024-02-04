@@ -42,19 +42,32 @@ class Login extends CI_Controller {
 		
 			if ($user) {
 				// Memeriksa apakah password cocok dengan hash yang disimpan dalam database
-				if (password_verify($password, $user['pass'])) {
-					$member = $this->db->get_where('anggota', ['email' => $email])->row_array();
+				if ($password === $user['pass']) {
+					if ($user['level'] == 'siswa'){
+						$member = $this->db->get_where('anggota', ['email' => $email])->row_array();
 		
+						$sessi = array(
+							'id_user' => $user['id_user'],
+							'id_member' => $member['id_anggota'],
+							'nis' => $member['nis'],
+							'nama' => $user['nama'],
+							'email' => $user['email'],
+							'level' => $user['level'],
+							'login' => 'perpusweb'
+						);
+					}
+					else{
 					$sessi = array(
 						'id_user' => $user['id_user'],
-						'id_member' => $member['id_anggota'],
-						'nis' => $member['nis'],
+						'id_member' => "A0035",
+						'nis' => "107450",
 						'nama' => $user['nama'],
 						'email' => $user['email'],
 						'level' => $user['level'],
 						'login' => 'perpusweb'
 					);
-		
+					}
+					
 					$this->session->set_userdata($sessi);
 		
 					$response = array('respon' => 'success');

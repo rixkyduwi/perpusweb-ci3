@@ -189,16 +189,19 @@
 
                 </div>
             </li>
-
-
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
             <?php endif; ?>
-
-          
-
+            <?php if($title == 'About' or $title == 'About'): ?>
+            <li class="nav-item active">
+                <?php else: ?>
+            <li class="nav-item">
+                <?php endif; ?>
+                <a class="nav-link" href="<?= base_url() ?>about">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Profile Programmer</span>
+                </a>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -220,12 +223,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Nama Aplikasi 
-                    <h1 class="h3 mb-0 text-gray-800"><b>PERPUSWEB</b></h1>
-                    -->
-
-                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->

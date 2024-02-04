@@ -1,25 +1,19 @@
 <?php
 class buku_model extends ci_model{
-
-
     function data()
     {
         $this->db->order_by('id_buku','DESC');
         return $query = $this->db->get('buku');
     }
-
     public function ambilFoto($where)
     {
       $this->db->order_by('id_buku','DESC');
       $this->db->limit(1);
-      $query = $this->db->get_where('buku', $where);   
-      
+      $query = $this->db->get_where('buku', $where); 
       $data = $query->row();
-      $foto= $data->foto;
-      
+      $foto = $data->foto;
       return $foto;
     }
-
     public function ambil_stok($where){
       $this->db->order_by('id_buku','DESC');
       $this->db->limit(1);
@@ -28,7 +22,6 @@ class buku_model extends ci_model{
       $stok = $data->jmlbuku;
       return $stok;
     }
-
     public function dataJoin()
     {
       $this->db->select('*');
@@ -36,11 +29,9 @@ class buku_model extends ci_model{
       $this->db->join('kategori as k', 'k.id_kategori = b.id_kategori');
       $this->db->join('penerbit as p', 'p.id_penerbit = b.id_penerbit');
       $this->db->join('rak as r', 'r.id_rak = b.id_rak');
-
       $this->db->order_by('b.id_buku','DESC');
       return $query = $this->db->get();
     }
-
     public function detail_join($where)
     {
       $this->db->select('*');
@@ -49,24 +40,18 @@ class buku_model extends ci_model{
       $this->db->join('kategori as k', 'k.id_kategori = b.id_kategori');
       $this->db->join('penerbit as p', 'p.id_penerbit = b.id_penerbit');
       $this->db->join('rak as r', 'r.id_rak = b.id_rak');
-
-      
       return $this->db->get();
     }
-
     public function detail_join_pbuku($where)
     {
       $this->db->select('*');
       $this->db->from('p_buku as pb');
       $this->db->join('buku as b', 'b.id_buku = pb.id_buku');
-
       $this->db->where('pb.id_pinjam',$where);
       return $this->db->get();
     }
-
-
     public function ambilId($table, $where)
-   {
+    {
        return $this->db->get_where($table, $where);
     }
 
@@ -78,10 +63,7 @@ class buku_model extends ci_model{
             return TRUE;
         }
         return false;
-
     }
-
-
     public function detail_data($where, $table)
     {
        return $this->db->get_where($table,$where);
@@ -96,10 +78,7 @@ class buku_model extends ci_model{
     {
        $this->db->where($where);
        $this->db->update($table, $data);
-
     }
-
-
     public function buat_kode()   {
 		  $this->db->select('RIGHT(buku.id_buku,4) as kode', FALSE);
 		  $this->db->order_by('id_buku','DESC');
@@ -118,9 +97,4 @@ class buku_model extends ci_model{
 		  $kodejadi = "B".$kodemax;    // hasilnya ODJ-0001 dst.
 		  return $kodejadi;
 	}
-
-
-
-
-
 }

@@ -26,8 +26,9 @@
                         <thead>
                             <tr>
                                 <th width="1%">No</th>
-                                <th>Nama Penerbit</th>
+                                <th>Maksum</th>
                                 <th>Keterangan</th>
+                                <th>Link Website Penerbit Buku</th>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
                                 <?php endif; ?>
@@ -50,6 +51,9 @@
                                     <?php else: ?>
                                     <?= $p->keterangan ?>
                                     <?php endif; ?>
+                                </td>
+                                <td>
+                                <a href="<?= $p->link ?>"> <?= $p->link ?></a>
                                 </td>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
@@ -97,13 +101,17 @@
                 <div class="col-lg-12">
                     <br>
                     <!-- Nama Kategori -->
-                    <div class="form-group"><label>Nama Penerbit</label>
-                        <input class="form-control" name="penerbit" type="text" placeholder="">
+                    <div class="form-group"><label>Nama Penerbit Maksum</label>
+                        <input class="form-control" name="penerbit" type="text" placeholder="penerbit a">
                     </div>
 
                     <!-- Keterangan -->
                     <div class="form-group"><label>Keterangan</label>
                         <textarea class="form-control" name="ket"></textarea>
+                    </div>
+
+                    <div class="form-group"><label>Link Website Penerbit</label>
+                    <input class="form-control" name="link" type="text" placeholder="https://">
                     </div>
 
                 </div>

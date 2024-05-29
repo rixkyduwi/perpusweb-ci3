@@ -53,6 +53,7 @@ function tgl_indo($tanggal){
                                 <th>Asal Buku</th>
                                 <th>Jumlah</th>
                                 <th>Keterangan</th>
+                                <th>penerbit</th>
                                 <th width="1%">Aksi</th>
                             </tr>
                         </thead>

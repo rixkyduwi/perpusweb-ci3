@@ -78,6 +78,10 @@
                             <div class="form-group"><label>Keterangan</label>
                                 <textarea class="form-control" name="ket" placeholder=""></textarea>
                             </div>
+                            
+                            <div class="form-group"><label>Penerbit</label>
+                                <textarea class="form-control" name="ket" placeholder=""></textarea>
+                            </div>
 
                         </div>
 

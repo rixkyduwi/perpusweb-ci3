@@ -44,6 +44,10 @@
                                     <span class="badge badge-success badge-md">
                                     <?php elseif($u->status == 'lulus'): ?>
                                     <span class="badge badge-danger badge-md">
+                                    <?php elseif($u->status == 'Tidak Aktif'): ?>
+                                    <span class="badge badge-primary badge-md">
+                                    <?php elseif($u->status == 'mangkir'): ?>
+                                    <span class="badge badge-warning badge-md">
                                     <?php else: ?>
                                     <span class="badge badge-secondary badge-md">
                                     <?php endif; ?>

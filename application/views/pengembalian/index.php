@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Pengembalian</h1>
         <a href="<?= base_url() ?>pengembalian/tambah" class="btn btn-sm btn-primary btn-icon-split">
-            <span class="text text-white">Pengembalian Buku</span>
+            <span class="text text-white">Cek Pengembalian Buku</span>
             <span class="icon text-white-50">
                 <i class="fas fa-undo"></i>
             </span>

@@ -77,8 +77,7 @@
 
                         <div class="input-group mb-4">
                             <select name="anggota" class="form-control chosen" onchange="ambilAnggota()">
-                                <option value="">--Pilih Anggota--</option>
-                                
+                        
                                 <?php if($this->session->userdata('level')=='admin') :?>
                                 <?php foreach($anggota as $a): ?>
                                 <option value="<?= $a->id_anggota?>">[<?= $a->id_anggota ?>] <?= $a->nama_lengkap ?>
@@ -200,6 +199,7 @@
 <script src="<?= base_url(); ?>assets/plugin/chosen/chosen.jquery.min.js"></script>
 
 <script>
+ambilAnggota() // dari assets/js/peminjaman.js
 $('.chosen').chosen({
     allow_single_deselect: true,
     no_results_text: "Oops, tidak ditemukan!"

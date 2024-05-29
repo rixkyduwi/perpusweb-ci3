@@ -67,9 +67,9 @@ class Peminjaman extends CI_Controller {
 	{
 		$data['title'] = 'Peminjaman';
 		$data['kode'] = $this->peminjaman_model->buat_kode(); 
-		// add 3 days to date
+		// add 3 days to date tambah hari peminjaman
 		$data['tglsekarang'] = Date('y-m-d');
-		$data['tglplus3'] =Date('y-m-d', strtotime('+3 days'));
+		$data['tglplus3'] =Date('y-m-d', strtotime('+7 days'));
 
 		//data untuk select
 		$data['anggota'] = $this->anggota_model->data()->result();

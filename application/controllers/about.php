@@ -77,7 +77,7 @@ class About extends CI_Controller {
 			'foto'=>$ganti
 				);
 
-		$where = array('id_user'=>'1');
+		$where = array('id'=>'1');
 	  
 		  $this->about_model->ubah_data($where, $data, 'about');
 		  $this->session->set_flashdata('Pesan','

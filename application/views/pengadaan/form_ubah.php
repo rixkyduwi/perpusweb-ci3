@@ -76,6 +76,10 @@ function format($tanggal){
                             <div class="form-group"><label>Keterangan</label>
                                 <textarea class="form-control" name="ket"><?= $d->ket ?></textarea>
                             </div>
+                            
+                            <div class="form-group"><label>penerbit</label>
+                                <textarea class="form-control" name="ket"><?= $d->ket ?></textarea>
+                            </div>
 
                         </div>
 

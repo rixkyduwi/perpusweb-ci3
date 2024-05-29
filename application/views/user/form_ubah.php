@@ -79,6 +79,8 @@
                                     <?php if($u->status == "Tidak Aktif"): ?> Selected <?php endif; ?> >Tidak Aktif</option>
                                         <option value="lulus" 
                                     <?php if($u->status == "lulus"): ?> Selected <?php endif; ?> >lulus</option>
+                                        <option value="mangkir" 
+                                    <?php if($u->status == "mangkir"): ?> Selected <?php endif; ?> >mangkir</option>
                                 </select>
                             </div>
 

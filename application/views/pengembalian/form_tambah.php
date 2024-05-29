@@ -14,8 +14,8 @@
                 <h1 class="h2 mb-0 text-gray-800">Pengembalian</h1>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-md btn-icon-split">
-                <span class="text text-white">Simpan Data</span>
+            <button type="submit" class="btn btn-primary btn-md btn-icon-split " data-toggle="tooltip" data-placement="bottom" title="klik apabila buku dan denda sudah selesai">
+                <span class="text text-white">Simpan Pengembalian Buku</span>
                 <span class="icon text-white-50">
                     <i class="fas fa-save"></i>
                 </span>
@@ -93,6 +93,20 @@
                             <div class="form-group">
                                 <Label>Denda</Label>
                                 <h6 class="m-0 font-weight-bold" id="denda">-</h6>
+                                <!-- Divider -->
+                                <hr class="sidebar-divider">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <Label>Kirim Tagihan Ke Email</Label>
+                                <?php echo validation_errors(); ?>
+                                <?php echo form_open('email_controller/send_email'); ?>
+                                <input style="display:none" type="email" value="<?php echo $this->session->userdata('email') ?>" name="to_email">
+                                <input style="display:none" type="text" value="pengembalian buku" name="subject">
+                                <textarea style="display:none" id="message"name="message"> </textarea>
+                                <h6 class="m-0 font-weight-bold" id="kirimtagihan">-</h6>
+                                <?php echo form_close(); ?>
                                 <!-- Divider -->
                                 <hr class="sidebar-divider">
                             </div>
@@ -182,7 +196,7 @@ function konfirmasi(id) {
 }
 
 function ambilDataPinjam() {
-    console.log("jalan4")
+    console.log("jalan4");
     var link = $('#baseurl').val();
     var base_url = link + 'pengembalian/getPinjam';
     var pinjam = $('[name="pinjam"]').val();
@@ -191,7 +205,7 @@ function ambilDataPinjam() {
     $('#loding').show();
 
     if (pinjam == '') {
-        console.log("jalan5")
+        console.log("jalan5");
         $('#tglpinjam').text("-");
         $('#tempo').text("-");
         $('#lambat').text("-");
@@ -201,77 +215,84 @@ function ambilDataPinjam() {
         $("#tbody").empty();
         $('#loding').hide();
     } else {
-        console.log("jalan6")
+        console.log("jalan6");
         $.ajax({
             type: 'POST',
             data: 'id=' + pinjam,
             url: base_url,
             dataType: 'json',
             success: function(hasil) {
-                console.log("jalan7")
+                console.log("jalan7");
 
-                $("#tbody").empty();
-                $('#loding').hide();
+                ambilBuku(hasil[0].id_pinjam, function(buku) {
+                    console.log(buku);
+                    $("#tbody").empty();
+                    $('#loding').hide();
 
-                $('#tglpinjam').text(hasil[0].tgl_pinjam);
-                $('#tempo').text(hasil[0].tempo);
-                if (selisih(hasil[0].tempo.split('-'), datenow) > 0) {
-                    console.log("jalan8")
-                    $('#lambat').text(selisih(hasil[0].tempo.split('-'), datenow) + " hari");
-                    $("[name='terlambat']").val(selisih(hasil[0].tempo.split('-'), datenow) + " hari");
-                    $("[name='denda']").val(denda(selisih(hasil[0].tempo.split('-'), datenow)));
-                    $('#denda').text(denda(selisih(hasil[0].tempo.split('-'), datenow)));
-                } else {
-                    console.log("jalan9")
-                    $('#lambat').text("-");
-                    $("[name='terlambat']").val("-");
-                    $('#denda').text("-");
-                    $("[name='denda']").val("-");
-                }
+                    $('#tglpinjam').text(hasil[0].tgl_pinjam);
+                    $('#tempo').text(hasil[0].tempo);
+                    if (selisih(hasil[0].tempo.split('-'), datenow) > 0) {
+                        console.log("jalan8");
+                        var haritelat = selisih(hasil[0].tempo.split('-'), datenow) + " hari";
+                        $('#lambat').text(selisih(hasil[0].tempo.split('-'), datenow) + " hari");
+                        $("[name='terlambat']").val(selisih(hasil[0].tempo.split('-'), datenow) + " hari");
+                        var dendarp = denda(selisih(hasil[0].tempo.split('-'), datenow));
+                        var judul = $("#judul_buku").html()
+                        $("[name='denda']").val(dendarp);
+                        $('#denda').text(dendarp);
+                        $('#kirimtagihan').html("<p><input class='btn btn-danger' type='button' value='Send Email' onclick='sendEmail()'></p>");
+                        var table = "<table>";
+                        for (var i = 0; i < buku.length; i++) {
+                            var newRow = "<tr class='bounceIn'>"
+                            var cols = "";
+                            var counter = i + 1;
 
-                ambilBuku(hasil[0].id_pinjam);
+                            cols += '<td>' + counter + '.</td>';
+                            cols += '<td>' + buku[i].id_buku + '</td>';
+                            cols += "<td class='judul_buku'>" + buku[i].judul + '</td>';
+                            cols += '<td>' + buku[i].isbn + '</td>';
+                            cols += '<td>' + buku[i].pengarang + '</td>';
+                            cols += '<td>' + buku[i].qty + '</td>';
 
-
+                            newRow += cols;
+                            newRow += "</tr>"
+                            table += newRow;
+                            table += "</table>";
+                        }
+                        $("#table-container").html(table);
+                        console.log(table);
+                        $('#message').html("kembalikan buku perpustakaan.<br> pada tgl pinjam:  "+hasil[0].tgl_pinjam+" dengan tanggal jatuh tempo "+hasil[0].tempo +" yang berarti anda terlambat mengembalikan buku selama "+ haritelat +"  dengan ini kami mengirim tagihan denda sebesar "+dendarp+" atas keterlambatan dimana denda per harinya yaitu RP.1000 <br> list buku yang dipinjam:<br>"+table+"<br> harap kembalikan buku ke perpustakaan dan bayar denda langsung di sana ");
+                    } else {
+                        console.log("jalan9");
+                        $('#lambat').text("-");
+                        $("[name='terlambat']").val("-");
+                        $('#denda').text("-");
+                        $("[name='denda']").val("-");
+                        $('#kirimtagihan').text("-");
+                    }
+                });
             }
         });
     }
+}
 
+function ambilBuku(idpinjam, callback) {
+    console.log("jalan10");
+    var link = $('#baseurl').val();
+    var base_url = link + 'pengembalian/getListBuku';
+    var pinjam = idpinjam;
 
-    function ambilBuku(idpinjam) {
-        console.log("jalan10")
-        var link = $('#baseurl').val();
-        var base_url = link + 'pengembalian/getListBuku';
-        var pinjam = idpinjam;
-
-        $.ajax({
-            type: 'POST',
-            data: 'id=' + pinjam,
-            url: base_url,
-            dataType: 'json',
-            success: function(hasil) {
-
-                console.log("jalan11")
-
-                for (var i = 0; i < hasil.length; i++) {
-                    var newRow = $("<tr class='bounceIn'>");
-                    var cols = "";
-                    var counter = i + 1;
-
-                    cols += '<td>' + counter + '.</td>';
-                    cols += '<td>' + hasil[i].id_buku + '</td>';
-                    cols += '<td>' + hasil[i].judul + '</td>';
-                    cols += '<td>' + hasil[i].isbn + '</td>';
-                    cols += '<td>' + hasil[i].pengarang + '</td>';
-                    cols += '<td>' + hasil[i].qty + '</td>';
-
-                    newRow.append(cols);
-                    $("table").append(newRow);
-
-                }
-
-            }
-        });
-    }
+    $.ajax({
+        type: 'POST',
+        data: 'id=' + pinjam,
+        url: base_url,
+        dataType: 'json',
+        success: function(hasil) {
+            console.log("jalan11");
+            callback(hasil);
+        }
+    });
+}
 
 
     function selisih(first, second) {
@@ -300,8 +321,25 @@ function ambilDataPinjam() {
         return "Rp." + total;
 
     }
+    function sendEmail() {
+        var to_email = document.getElementById('to_email').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
 
-}
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("pengembalian/send_email"); ?>',
+            data: {
+                to_email: to_email,
+                subject: subject,
+                message: message
+            },
+            success: function(response) {
+                alert(response);
+            }
+        });
+    }
+
 </script>
 <script src="<?= base_url(); ?>assets/js/validasi/formpengembalian.js"></script>
 <script src="<?= base_url(); ?>assets/plugin/chosen/chosen.jquery.min.js"></script>
@@ -311,6 +349,7 @@ $('.chosen').chosen({
     width: '100%',
 
 });
+
 </script>
 
 <?php if($this->session->flashdata('Pesan')): ?>

@@ -10,6 +10,9 @@ class Pengembalian extends CI_Controller {
 	$this->load->helper('cookie');
 	$this->load->model('peminjaman_model');
 	$this->load->model('pengembalian_model');
+	// Load library email dan helper
+	$this->load->library('email');
+	$this->load->helper('form');
   }
 	
 	public function index()
@@ -105,5 +108,47 @@ class Pengembalian extends CI_Controller {
 		redirect('pengembalian');
 
 	}
+	public function send_email() {
+        // Validasi form
+        $this->form_validation->set_rules('to_email', 'To', 'required|valid_email');
+        $this->form_validation->set_rules('subject', 'Subject', 'required');
+        $this->form_validation->set_rules('message', 'Message', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            // Jika validasi gagal, kembali ke form
+            $this->load->view('email_form');
+        } else {
+            // Mendapatkan input dari form
+            $to_email = $this->input->post('to_email');
+            $subject = $this->input->post('subject');
+            $message = $this->input->post('message');
+
+            // Konfigurasi email
+            $config['protocol'] = 'smtp';
+            $config['smtp_host'] = 'smtp.google.com'; // Ganti dengan host SMTP Anda
+            $config['smtp_port'] = 587; // Ganti dengan port SMTP Anda
+            $config['smtp_user'] = '.com'; // Ganti dengan email pengirim
+            $config['smtp_pass'] = 'your_password'; // Ganti dengan password email pengirim
+            $config['mailtype'] = 'html';
+            $config['charset'] = 'iso-8859-1';
+            $config['wordwrap'] = TRUE;
+            $config['newline'] = "\r\n";
+
+            $this->email->initialize($config);
+
+            // Set pengirim, penerima, subject, dan isi email
+            $this->email->from('your@example.com', 'Your Name'); // Ganti dengan nama pengirim
+            $this->email->to($to_email);
+            $this->email->subject($subject);
+            $this->email->message($message);
+
+            // Kirim email
+            if ($this->email->send()) {
+                echo 'Email berhasil dikirim.';
+            } else {
+                show_error($this->email->print_debugger());
+            }
+        }
+    }
     
 }

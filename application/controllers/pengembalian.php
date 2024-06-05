@@ -127,8 +127,8 @@ class Pengembalian extends CI_Controller {
             $config['protocol'] = 'smtp';
             $config['smtp_host'] = 'smtp.google.com'; // Ganti dengan host SMTP Anda
             $config['smtp_port'] = 587; // Ganti dengan port SMTP Anda
-            $config['smtp_user'] = '.com'; // Ganti dengan email pengirim
-            $config['smtp_pass'] = 'your_password'; // Ganti dengan password email pengirim
+            $config['smtp_user'] = 'pustakagama72dtegal@gmail.com'; // Ganti dengan email pengirim
+            $config['smtp_pass'] = 'gratisan'; // Ganti dengan password email pengirim
             $config['mailtype'] = 'html';
             $config['charset'] = 'iso-8859-1';
             $config['wordwrap'] = TRUE;
@@ -137,7 +137,7 @@ class Pengembalian extends CI_Controller {
             $this->email->initialize($config);
 
             // Set pengirim, penerima, subject, dan isi email
-            $this->email->from('your@example.com', 'Your Name'); // Ganti dengan nama pengirim
+            $this->email->from('pustakagama72dtegal@gmail.com', 'Admin Pustakagama'); // Ganti dengan nama pengirim
             $this->email->to($to_email);
             $this->email->subject($subject);
             $this->email->message($message);

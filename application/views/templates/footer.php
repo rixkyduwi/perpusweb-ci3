@@ -58,7 +58,6 @@
     </div>
 </div>
 
-<script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/login.js"></script>
 <script src="<?= base_url(); ?>assets/js/alll.js"></script>
 

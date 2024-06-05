@@ -6,13 +6,9 @@ function format($tanggal){
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
     <?php foreach($data as $d): ?>
-
     <form action="<?= base_url() ?>pengadaan/proses_ubah" name="myForm" method="POST" enctype="multipart/form-data"
         onsubmit="return validateForm()">
-
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-sm-flex">
@@ -29,7 +25,6 @@ function format($tanggal){
                     <i class="fas fa-save"></i>
                 </span>
             </button>
-
         </div>
 
         <div class="d-sm-flex  justify-content-between mb-0">
@@ -80,10 +75,7 @@ function format($tanggal){
                             <div class="form-group"><label>penerbit</label>
                                 <textarea class="form-control" name="ket"><?= $d->ket ?></textarea>
                             </div>
-
                         </div>
-
-
                         <br>
                     </div>
                 </div>

@@ -170,7 +170,10 @@
                                 </div>
                             </div>
                             <?php endif; ?>
-
+                            <div class="form-group"><label>Rak</label>
+                                <input type="text" class="form-control" name="coba" value="<?= $r->id_coba ?>">
+                               
+                            </div>
                         </div>
 
 

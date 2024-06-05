@@ -32,6 +32,7 @@
                                 <th>Stok</th>
                                 <th>Kategori</th>
                                 <th>Rak</th>
+                                <th>coba</th>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
                                 <?php endif; ?>
@@ -68,6 +69,7 @@
                                 </td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->kategori ?></td>
                                 <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->rak ?></td>
+                                <td onclick="detail('<?= $b->id_buku ?>')"><?= $b->coba ?></td>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
                                     <center>

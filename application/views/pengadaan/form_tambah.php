@@ -3,8 +3,6 @@
 
     <form action="<?= base_url() ?>pengadaan/proses_tambah" name="myForm" method="POST" enctype="multipart/form-data"
         onsubmit="return validateForm()">
-
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-sm-flex">
@@ -21,7 +19,6 @@
                     <i class="fas fa-save"></i>
                 </span>
             </button>
-
         </div>
 
         <div class="d-sm-flex  justify-content-between mb-0">
@@ -84,8 +81,6 @@
                             </div>
 
                         </div>
-
-
                         <br>
                     </div>
                 </div>

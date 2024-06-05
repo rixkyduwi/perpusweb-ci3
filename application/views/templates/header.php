@@ -37,6 +37,7 @@
     <!-- Custom styles for this page -->
     <link href="<?= base_url(); ?>assets/sbadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>

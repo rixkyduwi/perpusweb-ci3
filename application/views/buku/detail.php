@@ -119,6 +119,10 @@
                         <div class="form-group"><label>Rak</label>
                             <h4 class="h4 text-gray-800"><?= $d->rak ?></h4>
                         </div>
+                        <!-- coba -->
+                        <div class="form-group"><label>coba</label>
+                            <h4 class="h4 text-gray-800"><?= $d->coba ?></h4>
+                        </div>
 
                         <!-- Divider -->
                         <hr class="sidebar-divider">

@@ -139,6 +139,10 @@
                                 </div>
                             </div>
                             <?php endif; ?>
+                            <div class="form-group"><label>coba</label>
+                                <input type="text" class="form-control" name="coba">
+                               
+                            </div>
                         </div>
                         <br>
                     </div>

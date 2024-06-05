@@ -153,6 +153,7 @@ class Buku extends CI_Controller {
 		$sinopsis = $this->input->post('sinopsis');
 		$penerbit = $this->input->post('penerbit');
 		$rak = $this->input->post('rak');
+		$coba = $this->input->post('coba');
 	
 	
 		if ($namaFile == '') {
@@ -192,7 +193,8 @@ class Buku extends CI_Controller {
 			'jmlbuku'=>$jmlbuku,
 			'tahun' => $thn,
 			'sinopsis' => $sinopsis,
-			'foto' => $ganti
+			'foto' => $ganti,
+			'coba' => $coba
 				);
 	  
 		  $this->buku_model->tambah_data($data, 'buku');

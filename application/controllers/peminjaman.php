@@ -79,6 +79,16 @@ class Peminjaman extends CI_Controller {
 		$this->load->view('peminjaman/form_tambah');
 		$this->load->view('templates/footer');
 	}
+	function tambahHari($tanggal, $jumlahHari) {
+		// Buat objek DateTime dari string tanggal
+		$date = DateTime::createFromFormat('y-m-d', $tanggal);
+		
+		// Tambah hari menggunakan metode modify
+		$date->modify("+$jumlahHari days");
+		
+		// Kembalikan hasil dalam format yy-mm-dd
+		return $date->format('y-m-d');
+	}
 
 	public function proses_tambah()
 	{
@@ -87,7 +97,18 @@ class Peminjaman extends CI_Controller {
 		$idbuku = $_POST['idbuku']; 
 		$qty = $_POST['qty']; 
 		$tglpinjam = $_POST['tglpinjam']; 
-		$tglkembali = $_POST['tglkembali'];
+		if($this->session->userdata('level')=='admin'){
+			$tglkembali = $_POST['tglkembali'];
+		}
+		else{
+			$date = DateTime::createFromFormat('y-m-d', $tglpinjam);
+		
+			// Tambah hari menggunakan metode modify
+			$date->modify("+7 days");
+			
+			// Kembalikan hasil dalam format yy-mm-dd
+			$tglkembali= $date->format('y-m-d');
+		}
 		$ket = $_POST['ket'];
 		$usr = $this->session->userdata('username');
 

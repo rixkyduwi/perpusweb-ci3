@@ -109,46 +109,41 @@ class Pengembalian extends CI_Controller {
 
 	}
 	public function send_email() {
-        // Validasi form
-        $this->form_validation->set_rules('to_email', 'To', 'required|valid_email');
-        $this->form_validation->set_rules('subject', 'Subject', 'required');
-        $this->form_validation->set_rules('message', 'Message', 'required');
+        // Mendapatkan input dari form
+        $to_email = $this->input->post('to_email');
+        $subject = $this->input->post('subject');
+        $message = $this->input->post('message');
 
-        if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, kembali ke form
-            $this->load->view('email_form');
+        // Konfigurasi email
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'smtp.gmail.com';
+        $config['smtp_port'] = 587;
+        $config['smtp_user'] = 'pustakagama72dtegal@gmail.com';
+        $config['smtp_pass'] = 'ewwg gsdy gewp bskh';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['wordwrap'] = TRUE;
+        $config['newline'] = "\r\n";
+        $config['smtp_crypto'] = 'tls'; // Menggunakan TLS
+
+        // Load library email dan inisialisasi konfigurasi
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+
+        // Set pengirim, penerima, subject, dan isi email
+        $this->email->from('pustakagama72dtegal@gmail.com', 'Admin Pustakagama');
+        $this->email->to($to_email);
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        // Kirim email
+        if ($this->email->send()) {
+            echo 'Email berhasil dikirim.';
         } else {
-            // Mendapatkan input dari form
-            $to_email = $this->input->post('to_email');
-            $subject = $this->input->post('subject');
-            $message = $this->input->post('message');
-
-            // Konfigurasi email
-            $config['protocol'] = 'smtp';
-            $config['smtp_host'] = 'smtp.google.com'; // Ganti dengan host SMTP Anda
-            $config['smtp_port'] = 587; // Ganti dengan port SMTP Anda
-            $config['smtp_user'] = 'pustakagama72dtegal@gmail.com'; // Ganti dengan email pengirim
-            $config['smtp_pass'] = 'gratisan'; // Ganti dengan password email pengirim
-            $config['mailtype'] = 'html';
-            $config['charset'] = 'iso-8859-1';
-            $config['wordwrap'] = TRUE;
-            $config['newline'] = "\r\n";
-
-            $this->email->initialize($config);
-
-            // Set pengirim, penerima, subject, dan isi email
-            $this->email->from('pustakagama72dtegal@gmail.com', 'Admin Pustakagama'); // Ganti dengan nama pengirim
-            $this->email->to($to_email);
-            $this->email->subject($subject);
-            $this->email->message($message);
-
-            // Kirim email
-            if ($this->email->send()) {
-                echo 'Email berhasil dikirim.';
-            } else {
-                show_error($this->email->print_debugger());
-            }
+            // Menampilkan pesan error yang lebih detail
+            echo 'Email gagal dikirim. Debugging message: ' . $this->email->print_debugger();
         }
-    }
+        
+    }	
     
 }

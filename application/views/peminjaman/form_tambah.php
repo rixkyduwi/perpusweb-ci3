@@ -50,7 +50,13 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Tanggal Kembali</label>
-                                    <input type="text" name="tglkembali" readonly class="form-control"
+                                    <input type="text" name="tglkembali"
+                                    <?php if($this->session->userdata('level')=='admin') :?>
+
+                                        <?php else: ?>
+                                            readonly
+                                        <?php endif;?> 
+                                        class="form-control"
                                         value="<?= $tglplus3 ?>">
                                 </div>
                             </div>
@@ -160,7 +166,7 @@
                                 </button>
                             </div>
 
-                            <div class="col-lg mb-4">
+                            <div class="col-lg mb-4"  id="select_buku">
                                 <div class="table-responsive">
                                     <table class="table" width="100%" cellspacing="0">
                                         <thead>
@@ -199,6 +205,24 @@
 <script src="<?= base_url(); ?>assets/plugin/chosen/chosen.jquery.min.js"></script>
 
 <script>
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+// Ambil nilai dari parameter 'id_buku'
+const idBuku = urlParams.get('id_buku');
+// Cek apakah 'id_buku' ada
+function scrollToSection() {
+    var target = document.getElementById('select_buku');
+    target.scrollIntoView({ behavior: 'smooth' });
+}
+
+if (idBuku) {
+    console.log('ID Buku: ' + idBuku);
+    $("#buku").val(idBuku);
+    ambilStok(); // dari assets/js/peminjaman.js
+    scrollToSection();
+} else {
+    console.log('Parameter id_buku tidak ditemukan dalam URL.');
+}
 ambilAnggota() // dari assets/js/peminjaman.js
 $('.chosen').chosen({
     allow_single_deselect: true,

@@ -292,8 +292,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="namaP"><?= $this->session->userdata('username') ?></span>
                                 <input type="hidden" name="iduser" id="iduser" value="<?= $this->session->userdata('id_user') ?>">
-                                <img class="img-profile rounded-circle" id="img"
-                                    src="<?= base_url() ?>assets/upload/pengguna/<?= $this->session->userdata('foto') ?>">
+                                <img class="img-profile rounded-circle" id="img" src="<?= base_url() ?>assets/upload/pengguna/<?= $this->session->userdata('foto') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

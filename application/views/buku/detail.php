@@ -30,6 +30,7 @@
                     <div class="col-lg-3">
                         <img width="100%" style="border-radius: 10px;"
                             src="<?= base_url() ?>assets/upload/buku/<?= $d->foto ?>" alt="">
+                            <button class="btn btn-success w-100 mt-2"onclick="document.location.href='<?= base_url() ?>peminjaman/tambah?id_buku=<?= $d->id_buku ?>'">Pinjam</button>
                     </div>
 
                     <br>

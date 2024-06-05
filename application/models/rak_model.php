@@ -4,7 +4,7 @@ class rak_model extends ci_model{
 
     function data()
     {
-        $this->db->order_by('id_rak','DESC');
+        $this->db->order_by('id_rak','ASC');
         return $query = $this->db->get('rak');
     }
 
@@ -62,9 +62,4 @@ class rak_model extends ci_model{
 		  $kodejadi = "Rak-".$kodemax;    
 		  return $kodejadi;
 	}
-
-
-
-
-
 }

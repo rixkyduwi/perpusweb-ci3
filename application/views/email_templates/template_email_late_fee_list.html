@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pemberitahuan Pengembalian Buku Terlambat</title>
+</head>
+<body>
+    <h2>Pemberitahuan Pengembalian Buku Terlambat</h2>
+    <p>Halo [Nama Anggota],</p>
+    <p>Kami ingin memberitahukan bahwa beberapa buku yang Anda pinjam dari perpustakaan kami sudah terlambat untuk dikembalikan. Berikut adalah rincian buku-buku yang Anda pinjam:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Judul Buku</th>
+                <th>Penulis</th>
+                <th>Tanggal Peminjaman</th>
+                <th>Tanggal Jatuh Tempo</th>
+                <th>Tanggal Pengembalian</th>
+                <th>Hari Terlambat</th>
+                <th>Denda Per Hari</th>
+                <th>Total Denda</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Mulai Pengulangan -->
+            <?php foreach ($buku_dipinjam as $buku): ?>
+            <tr>
+                <td><?php echo $buku['judul']; ?></td>
+                <td><?php echo $buku['penulis']; ?></td>
+                <td><?php echo $buku['tanggal_peminjaman']; ?></td>
+                <td><?php echo $buku['tanggal_jatuh_tempo']; ?></td>
+                <td><?php echo $buku['tanggal_pengembalian']; ?></td>
+                <td><?php echo $buku['hari_terlambat']; ?></td>
+                <td>Rp 1.000</td>
+                <td>Rp <?php echo number_format($buku['total_denda'], 0, ',', '.'); ?></td>
+            </tr>
+            <?php endforeach; ?>
+            <!-- Akhir Pengulangan -->
+        </tbody>
+    </table>
+
+    <!-- Total Denda -->
+    <p>Total Denda Keseluruhan: Rp <?php echo number_format($total_denda_keseluruhan, 0, ',', '.'); ?></p>
+
+    <p>Mohon segera mengembalikan buku-buku yang Anda pinjam beserta denda keterlambatannya. Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, silakan hubungi kami di [Nomor Telepon] atau [Email Kontak].</p>
+    <p>Terima kasih atas perhatian Anda.</p>
+    <p>Salam,</p>
+    <p>[Nama Perpustakaan]</p>
+</body>
+</html>

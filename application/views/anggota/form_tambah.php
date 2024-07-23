@@ -4,7 +4,6 @@
     <form action="<?= base_url() ?>anggota/proses_tambah" name="myForm" method="POST" enctype="multipart/form-data"
         onsubmit="return validateForm()">
 
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-sm-flex">
@@ -21,10 +20,9 @@
                     <i class="fas fa-save"></i>
                 </span>
             </button>
-
         </div>
 
-        <div class="d-sm-flex  justify-content-between mb-0">
+        <div class="d-sm-flex justify-content-between mb-0">
             <div class="col-lg-8 mb-4">
                 <!-- form -->
                 <div class="card border-bottom-primary shadow mb-4">
@@ -34,71 +32,112 @@
                     <div class="card-body">
                         <div class="col-lg-12">
                             <!-- Nama Lengkap -->
-                            <div class="form-group"><label>Nama Lengkap</label>
+                            <div class="form-group">
+                                <label>Nama Lengkap</label>
                                 <input class="form-control" name="nmlengkap" type="text" placeholder="">
                             </div>
 
                             <!-- NO Telepon -->
-                            <div class="form-group"><label>Nomor Telepon</label>
-                                <input class="form-control" name="notelp" type="number" >
+                            <div class="form-group">
+                                <label>Nomor Telepon</label>
+                                <input class="form-control" name="notelp" type="number">
                             </div>
 
-                            <!-- Jenis Kelamin -->
-                            <div class="form-group"><label>Jenis Kelamin</label>
-
+                            <!-- Kelas -->
+                            <div class="form-group">
+                                <label>Kelas</label>
                                 <div class="col-sm-12 d-flex">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="laki" name="jk" value="Laki-laki" checked>
-                                        <label class="custom-control-label" for="laki">Laki - laki</label>
+                                        <input type="radio" class="custom-control-input" id="kelas10" name="kelas"
+                                            value="X">
+                                        <label class="custom-control-label" for="kelas10">X</label>
                                     </div>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="Perempuan" id="perempuan" name="jk">
-                                        <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                        <input type="radio" class="custom-control-input" id="kelas11" name="kelas"
+                                            value="XI">
+                                        <label class="custom-control-label" for="kelas11">XI</label>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="kelas12" name="kelas"
+                                            value="XII">
+                                        <label class="custom-control-label" for="kelas12">XII</label>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- Jenis Kelamin -->
+                            <div class="form-group">
+                                <label>Jenis Kelamin</label>
+                                <div class="col-sm-12 d-flex">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="laki" name="jk"
+                                            value="Laki-laki" checked>
+                                        <label class="custom-control-label" for="laki">Laki - laki</label>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="Perempuan"
+                                            id="perempuan" name="jk">
+                                        <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="d-sm-flex align-items-center justify-content-between mb-0">
                             <div class="col-lg-4">
                                 <!-- Tempat Lahir -->
-                                <div class="form-group"><label>Tempat Lahir</label>
+                                <div class="form-group">
+                                    <label>Tempat Lahir</label>
                                     <input class="form-control" name="tempat" type="text" placeholder="">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <!-- tgl Lahir -->
-                                <div class="form-group"><label>Tgl Lahir</label>
+                                <div class="form-group">
+                                    <label>Tgl Lahir</label>
                                     <input class="form-control" name="tgllahir" id="datepicker" type="text"
                                         autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <!-- umur -->
-                                <div class="form-group"><label>Umur</label>
+                                <div class="form-group">
+                                    <label>Umur</label>
                                     <input class="form-control" name="umur" type="number" placeholder="">
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-12">
-
                             <!-- Alamat -->
-                            <div class="form-group"><label>Alamat</label>
+                            <div class="form-group">
+                                <label>Alamat</label>
                                 <textarea class="form-control" name="alamat" type="text" placeholder=""></textarea>
+                        <!-- Kota -->
+                        <div class="form-group">
+                            <label>Kota</label>
+                            <div class="col-sm-12 d-flex">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="tegal" name="domisili"
+                                        value="tegal">
+                                    <label class="custom-control-label" for="tegal">Tegal</label>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="diluartegal" name="domisili"
+                                        value="diluar tegal">
+                                    <label class="custom-control-label" for="diluartegal">Diluar Tegal</label>
+                                </div>
                             </div>
-
                         </div>
-
-
+                            </div>
+                        </div>
                         <br>
                     </div>
                 </div>
-
             </div>
-
             <div class="col-lg-4 mb-4">
                 <!-- file -->
                 <div class="card border-bottom-primary shadow mb-4">
@@ -134,18 +173,13 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
-
-
     </form>
 
 </div>
 <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
 
 <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/anggota.js"></script>
@@ -153,32 +187,30 @@
 <script src="<?= base_url(); ?>assets/plugin/datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script>
-$('#datepicker').datepicker({
-    autoclose: true
-});
+    $('#datepicker').datepicker({
+        autoclose: true
+    });
 </script>
 
-<?php if($this->session->flashdata('Pesan')): ?>
+<?php if ($this->session->flashdata('Pesan')): ?>
 
 <?php else: ?>
-<script>
-$(document).ready(function() {
-
-    $('#pdf').hide();
-
-    let timerInterval
-    Swal.fire({
-        title: 'Memuat...',
-        timer: 1000,
-        onBeforeOpen: () => {
-            Swal.showLoading()
-        },
-        onClose: () => {
-            clearInterval(timerInterval)
-        }
-    }).then((result) => {
-
-    })
-});
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#pdf').hide();
+            let timerInterval;
+            Swal.fire({
+                title: 'Memuat...',
+                timer: 1000,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                // Optional: Add any code here if you want to do something after the timer finishes
+            })
+        });
+    </script>
 <?php endif; ?>

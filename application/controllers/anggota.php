@@ -101,7 +101,7 @@ class Anggota extends CI_Controller {
 		$tgllahir = $this->input->post('tgllahir');
 		$umur = $this->input->post('umur');
 		$alamat = $this->input->post('alamat');
-	
+		$domisili = $this->input->post('domisili');
 	
 		if ($namaFile == '') {
 		  	$ganti = 'man.png';
@@ -118,12 +118,9 @@ class Anggota extends CI_Controller {
 		  	redirect('anggota/tambah');
 			}
 			else{
-	
 			  $data = array('photo' => $this->upload->data());
 			  $nama_file= $data['photo']['file_name'];
 			  $ganti = str_replace(" ", "_", $nama_file);
-	
-	
 			}
 
 		}
@@ -137,6 +134,7 @@ class Anggota extends CI_Controller {
 			'tgllahir'=>$tgllahir,
 			'umur'=>$umur,
 			'alamat'=>$alamat,
+			'domisili'=>$domisili,
 			'foto'=>$ganti
 				);
 	  
@@ -174,7 +172,7 @@ class Anggota extends CI_Controller {
 		$tgllahir = $this->input->post('tgllahir');
 		$umur = $this->input->post('umur');
 		$alamat = $this->input->post('alamat');
-
+		$domisili = $this->input->post('domisili');
 		$flama = $this->input->post('fotoLama');
 	
 	

@@ -32,7 +32,8 @@
                                 <th>No.Telepon</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Umur</th>
-                                <th>Alamat</th>            
+                                <th>Alamat</th>   
+                                <th>Domisili</th>            
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <th width="1%">Aksi</th>
                                 <?php endif; ?>
@@ -51,6 +52,7 @@
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->jk ?></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->umur ?></td>
                                 <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->alamat ?></td>
+                                <td onclick="detail('<?= $a->id_anggota ?>')"><?= $a->domisili ?></td>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                 <td>
                                     <center>

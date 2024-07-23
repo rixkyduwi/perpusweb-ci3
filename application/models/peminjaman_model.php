@@ -108,6 +108,15 @@ class peminjaman_model extends ci_model{
       $this->db->where('pb.id_pinjam',$where);
       return $query = $this->db->get();
     }
+    public function detail_user_join($where)
+    {
+      $this->db->select('*');
+      $this->db->from('perpusweb_peminjaman as p');
+      $this->db->join('anggota as a', 'a.id_anggota = p.id_anggota');
+
+      $this->db->where('p.id_pinjam',$where);
+      return $query = $this->db->get();
+    }
 
     //multiple insert
     public function save_batch($data, $table){

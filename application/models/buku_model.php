@@ -24,14 +24,14 @@ class buku_model extends ci_model{
     }
     public function dataJoin()
     {
-      $this->db->select('*');
+      $this->db->select('b.id_buku, b.id_kategori, b.id_penerbit, b.id_rak, b.judul, b.pengarang, b.isbn, b.jmlhal, b.jmlbuku, b.tahun, b.sinopsis, b.foto, b.coba, k.kategori, k.keterangan, p.penerbit, p.link, p.tahun_terbit, p.link_buku, p.kategori_penerbit, r.rak');
       $this->db->from('buku as b');
       $this->db->join('kategori as k', 'k.id_kategori = b.id_kategori');
       $this->db->join('penerbit as p', 'p.id_penerbit = b.id_penerbit');
       $this->db->join('rak as r', 'r.id_rak = b.id_rak');
-      $this->db->order_by('b.id_buku','DESC');
+      $this->db->order_by('b.id_buku', 'DESC');
       return $query = $this->db->get();
-    }
+    }    
     public function detail_join($where)
     {
       $this->db->select('*');

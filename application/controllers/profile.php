@@ -76,11 +76,8 @@ class Profile extends CI_Controller {
 			  if($flama !== 'user.png'){
 				unlink('./assets/upload/pengguna/'.$flama.'');
 			  }
-	
 			}
-
 		}
-
 		$data=array(
 			'nama'=>$user,
 			'notelp'=>$notelp,

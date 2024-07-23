@@ -110,7 +110,7 @@
                                 
                                 <?php echo validation_errors(); ?>
                                 <?php echo form_open('email_controller/send_email'); ?>
-                                <input class="form-control"  type="email" value="<?php echo $this->session->userdata('email') ?>" name="to_email">
+                                <input class="form-control"  type="email" value="" name="to_email">
                                 <input style="display:none" type="text" value="pengembalian buku" name="subject">
                                 <input style="display:none" id="message"name="message" type="text">
                                 <h6 class="m-0 font-weight-bold" id="kirimtagihan">-</h6>
@@ -204,6 +204,7 @@ var user="<?= $this->session->userdata('level') ?>"
 $("[name='to_email']").hide();
 data = []
 buku = []
+user = []
 function ambilDataPinjam() {
     console.log("jalan4");
     var link = $('#baseurl').val();
@@ -235,6 +236,10 @@ function ambilDataPinjam() {
             success: function(hasil) {
                 console.log("jalan7");
                 data = hasil
+                // Memanggil fungsi dengan callback
+                ambilUser(hasil[0].id_pinjam, function(p_user) {
+                    console.log(p_user[0].id);
+                });
                 ambilBuku(hasil[0].id_pinjam, function(p_buku) {
                     console.log(p_buku);
                     buku = p_buku
@@ -343,7 +348,25 @@ function ambilBuku(idpinjam, callback) {
         }
     });
 }
-
+function ambilUser(idpinjam, callback) {
+    var link = $('#baseurl').val();
+    var base_url = link + 'pengembalian/getUser';
+    var pinjam = idpinjam;
+    $.ajax({
+        type: 'POST',
+        data: 'id=' + pinjam,
+        url: base_url,
+        dataType: 'json',
+        success: function(hasil) {
+            console.log("jalan ambiluser");
+            console.log(hasil)
+            callback(hasil);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error fetching user data: " + error);
+        }
+    });
+}
 
     function selisih(first, second) {
 

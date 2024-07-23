@@ -49,6 +49,13 @@ class Pengembalian extends CI_Controller {
     	$data = $this->peminjaman_model->detail_buku_join($id)->result();
     	echo json_encode($data);
 	}
+	
+	public function getUser()
+	{
+		$id = $this->input->post('id');
+    	$data = $this->peminjaman_model->detail_user_join($id)->result();
+    	echo json_encode($data);
+	}
 
 	public function proses_hapus($id)
 	{

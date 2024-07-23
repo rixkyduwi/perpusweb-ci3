@@ -110,7 +110,7 @@ class peminjaman_model extends ci_model{
     }
     public function detail_user_join($where)
     {
-      $this->db->select('*');
+      $this->db->select('a.id_anggota, a.nama_lengkap, a.email');
       $this->db->from('perpusweb_peminjaman as p');
       $this->db->join('anggota as a', 'a.id_anggota = p.id_anggota');
 

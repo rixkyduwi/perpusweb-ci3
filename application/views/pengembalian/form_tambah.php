@@ -110,7 +110,7 @@
                                 
                                 <?php echo validation_errors(); ?>
                                 <?php echo form_open('email_controller/send_email'); ?>
-                                <input class="form-control"  type="email" value="" name="to_email">
+                                <input class="form-control"  type="email" id="to_email" value="" name="to_email">
                                 <input style="display:none" type="text" value="pengembalian buku" name="subject">
                                 <input style="display:none" id="message"name="message" type="text">
                                 <h6 class="m-0 font-weight-bold" id="kirimtagihan">-</h6>
@@ -239,6 +239,7 @@ function ambilDataPinjam() {
                 // Memanggil fungsi dengan callback
                 ambilUser(hasil[0].id_pinjam, function(p_user) {
                     console.log(p_user[0].id);
+                    $("#to_email").val(p_user[0].email)
                 });
                 ambilBuku(hasil[0].id_pinjam, function(p_buku) {
                     console.log(p_buku);

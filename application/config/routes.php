@@ -24,6 +24,8 @@ $route['user'] = 'User/index';
 //laporan
 $route['lapengadaan'] = 'Laporan/pengadaan';
 $route['lapeminjaman'] = 'Laporan/peminjaman';
+//denda
+$route['denda'] = 'Denda/index';
 
 
 

@@ -119,15 +119,15 @@
             <?php endif; ?>
 
             <?php if($this->session->userdata('level') == 'admin'):?>
-            <?php if($title == 'Set'): ?>
+            <?php if($title == 'Set Denda'): ?>
             <li class="nav-item active">
                 <?php else: ?>
             <li class="nav-item">
                 <?php endif; ?>
                 
-                <a class="nav-link" href="<?= base_url() ?>pengadaan">
-                    <i class="fas fa-fw fa-shopping-cart"></i>
-                    <span>Pengadaan Buku</span>
+                <a class="nav-link" href="<?= base_url() ?>denda">
+                    <i class="fas fa-fw fa-money"></i>
+                    <span>Set Denda</span>
                 </a>
             </li>
             <?php endif; ?>

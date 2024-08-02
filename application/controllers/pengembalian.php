@@ -13,6 +13,7 @@ class Pengembalian extends CI_Controller {
 	// Load library email dan helper
 	$this->load->library('email');
 	$this->load->helper('form');
+	$this->load->model('denda_model');
   }
 	
 	public function index()
@@ -30,7 +31,7 @@ class Pengembalian extends CI_Controller {
 		$data['title'] = 'Pengembalian';
 		$data['pinjam'] = $this->peminjaman_model->dataJoinStatus()->result();
 		$data['tglnow'] = date('Y-m-d');
-
+		$data['denda'] = $this->denda_model->get_denda();
 		$this->load->view('templates/header', $data);
 		$this->load->view('pengembalian/form_tambah');
 		$this->load->view('templates/footer');

@@ -118,6 +118,20 @@
             </li>
             <?php endif; ?>
 
+            <?php if($this->session->userdata('level') == 'admin'):?>
+            <?php if($title == 'Set'): ?>
+            <li class="nav-item active">
+                <?php else: ?>
+            <li class="nav-item">
+                <?php endif; ?>
+                
+                <a class="nav-link" href="<?= base_url() ?>pengadaan">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Pengadaan Buku</span>
+                </a>
+            </li>
+            <?php endif; ?>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <?php if($title == 'Peminjaman' or $title == 'Pengembalian'): ?>
             <li class="nav-item active">

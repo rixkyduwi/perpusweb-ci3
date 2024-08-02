@@ -74,7 +74,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <Label>Tempo</Label>
                                 <?php if($this->session->userdata('level') == 'admin'):?>
@@ -104,7 +104,7 @@
                                 <hr class="sidebar-divider">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-12">
                             <div class="form-group">
                                 <Label>Kirim Tagihan Ke Email : </Label>
                                 
@@ -388,7 +388,8 @@ function ambilUser(idpinjam, callback) {
     function denda(terlambat) {
         console.log("jalan13")
         var hari = terlambat;
-        var dendaperhari = 1000;
+        var denda = "<?= $denda->amount; ?>"
+        var dendaperhari = parseInt(denda);
 
         var total = hari * dendaperhari;
         console.log(total);

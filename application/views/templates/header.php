@@ -126,7 +126,7 @@
                 <?php endif; ?>
                 
                 <a class="nav-link" href="<?= base_url() ?>denda">
-                    <i class="fas fa-fw fa-money"></i>
+                    <i class="fas fa-fw fa-money-bill-wave"></i>
                     <span>Set Denda</span>
                 </a>
             </li>

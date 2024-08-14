@@ -40,17 +40,17 @@
                                     
                                 <?php if($this->session->userdata('level') == 'admin'):?>
                                     <?php foreach($pinjam as $p): ?>
-                                    <option value="<?= $p->id_pinjam?> - <?= $p->nama_lengkap ?>"><?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>
+                                    <option value="<?= $p->id_pinjam?> - <?= $p->nama_lengkap ?> - <?= $p->email ?>"><?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>
                                     </option>
                                     <?php endforeach; ?>
                                 <?php elseif($this->session->userdata('level') == 'siswa'):?>
                                     <?php foreach($pinjam as $p): ?>
                                     
                                 <?php if($p->nama_lengkap==$this->session->userdata('nama')) :?>
-                                    <option value="<?= $p->id_pinjam?> - <?= $p->nama_lengkap ?>"><?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>
+                                    <option value="<?= $p->id_pinjam?> - <?= $p->nama_lengkap ?> - <?= $p->email ?>"><?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>
                                     </option>
                                     <script>
-                                        $('[name="pinjam"]').val("<?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?>");
+                                        $('[name="pinjam"]').val("<?= $p->id_pinjam ?> - <?= $p->nama_lengkap ?> - <?= $p->email ?>");
                                     </script>
                                     <?php endif ;?>
                                     <?php endforeach ?>
@@ -264,10 +264,14 @@ function ambilDataPinjam() {
 function tentukanjatuhtempo(tgl){
     var datenow = $('[name="tglnow"]').val().split('-');
     var tgl_pinjam = $('#tglpinjam').text()
-    console.log(tgl);
+    console.log("tangal jatuh tempo ",tgl);
     console.log(datenow);
     var selisihhari = selisih(tgl, datenow);
     console.log(parseInt(selisihhari))
+    tgl = tgl[0]+"-"+tgl[1]+"-"+tgl[2];
+    console.log(tgl);
+    $("#tempo").val(tgl)
+    $("[name='to_email']").val()
     
     var table = "<table class='table' width='100%' cellspacing='0'>";
         var thead = '<thead><tr><th width="1%">No</th><th>ID Buku</th><th>Judul</th><th>ISBN</th><th>Pengarang</th><th>Qty</th></tr></thead>';
@@ -293,7 +297,11 @@ function tentukanjatuhtempo(tgl){
         $("#table-container").html(table);
         
     if (parseInt(selisihhari) > 0) {
+        var siswa = $('[name="pinjam"]').val().split('-');
+        nama_siswa = siswa[1];
+        email = siswa[2];
         $("[name='to_email']").show();
+        $("[name='to_email']").val(email)
         console.log("jalan8");
         var haritelat = selisihhari+ " hari";
         $('#lambat').text(selisihhari+ " hari");
@@ -304,8 +312,6 @@ function tentukanjatuhtempo(tgl){
         $('#kirimtagihan').html("<p><input class='btn btn-danger mt-1' type='button' value='Send Email' onclick='sendEmail()'></p>");
         $("[name='subject']").val("Penagihan Pengembalian Buku Telat "+selisihhari+" Hari")
         
-        var nama_siswa = $('[name="pinjam"]').val().split('-');
-        nama_siswa =nama_siswa[1];
             $("[name='message']").val("<!DOCTYPE html> <html> <head> <title>Pemberitahuan Pengembalian Buku Terlambat</title>"+ 
             "<link href='<?= base_url(); ?>assets/sbadmin/vendor/datatables/dataTables.bootstrap4.min.css' rel='stylesheet'> </head>"+ 
             "<style> table { border-collapse: collapse; width: 100%; } table, th, td { border: 1px solid black; } th, td, tr { padding: 8px; text-align: left; } </style><body style='color:#28282B'> "+

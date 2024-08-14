@@ -17,33 +17,34 @@ class Denda extends CI_Controller {
     }
 
     public function save() {
-        $data = $this->input->post();
-        $nestableData = json_decode($data['nestable'], true);
-        $amount = $data['amount'];
-
-        // Update all denda statuses to 0
+        $nestableData = $this->input->post('nestable');
+        $newAmounts = $this->input->post('amount'); // Array of new amounts
+        if ($nestableData){
+        $nestableArray = json_decode($nestableData, true);
+    
         $this->denda_model->update_all_denda_status(0);
-
-        // Update the status of the first item in the list to 1
-        if (isset($nestableData[0]['id'])) {
-            $this->denda_model->update_denda_status($nestableData[0]['id'], 1);
+    
+        foreach ($nestableArray as $item) {
+            $this->denda_model->update_denda_status($item['id'], $item['status']);
         }
-
-        // Save new denda item
-        if ($amount) {
-            $this->denda_model->tambah_denda(['amount' => $amount, 'status' => 0]);
         }
-
-        // Optionally redirect or set a success message
-        $this->session->set_flashdata('Pesan', 'Perubahan disimpan');
-        redirect('denda');
+        if ($newAmounts) {
+            foreach ($newAmounts as $amount) {
+                $this->denda_model->tambah_denda(['amount' => $amount, 'status' => 0]);
+            }
+        }
+    
+        echo json_encode(['status' => 'success']);
     }
+    
+    
 
     public function tambah_proses() {
         $data = array(
             'amount' => $this->input->post('amount'),
+            'status' => 0,
         );
-
+        var_dump($data);
         if ($this->denda_model->tambah_denda($data)) {
             $this->session->set_flashdata('success', 'Denda berhasil ditambahkan.');
         } else {

@@ -2,11 +2,12 @@
 class Denda_model extends CI_Model {
 
     public function all_denda() {
+        $this->db->order_by('status', 'DESC');
         return $this->db->get('denda')->result();
     }
 
-    public function get_denda($id) {
-        $this->db->where('id', $id);
+    public function get_denda() {
+        $this->db->where('status', 1);
         $query = $this->db->get('denda');
         return $query->row();
     }

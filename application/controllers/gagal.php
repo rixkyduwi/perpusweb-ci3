@@ -18,4 +18,5 @@ class Gagal extends CI_Controller {
 		$this->load->view('errors/error404');
 		$this->load->view('templates/footer');
 	}
+	
 }

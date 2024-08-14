@@ -115,14 +115,12 @@
                             <!-- Divider -->
                             <hr class="sidebar-divider">
 
-
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-
 
     </form>
 
